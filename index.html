@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Wedding Dress Book — 幻想的な花嫁のドレス図鑑</title>
+    <meta name="description" content="AIが描き出す、夢のようなウェディングドレスの世界。幻想的な花嫁をテーマにした作品をギャラリー形式でお届けします。">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Noto+Serif+JP:wght@200;300;400;500;600&family=Zen+Kaku+Gothic+New:wght@300;400;500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- ═══ Header ═══ -->
+    <header class="site-header">
+        <div class="header-inner">
+            <p class="header-eyebrow">Fantastical Bride Collection</p>
+            <h1 class="header-title">AI Wedding Dress Book</h1>
+            <p class="header-subtitle">— 幻想的な花嫁のドレス図鑑 —</p>
+            <div class="header-line"></div>
+        </div>
+    </header>
+
+    <!-- ═══ Gallery ═══ -->
+    <main class="gallery-section">
+        <div class="gallery-grid" id="gallery">
+
+            <!-- ────────────────────────────────────────
+           ドレスカード テンプレート
+           新しいドレスを追加するには、このブロックをコピーして
+           画像・タイトル・説明を書き換えてください。
+           ──────────────────────────────────────── -->
+
+            <article class="dress-card" data-index="1">
+                <div class="card-image-wrap">
+                    <img src="photos/dress-001.webp" alt="Vol.1 — 月光に咲くシルクヴェールの花嫁" loading="lazy">
+                    <div class="card-overlay">
+                        <span class="overlay-icon">✦</span>
+                        <span class="overlay-text">Details</span>
+                    </div>
+                </div>
+                <div class="card-info">
+                    <span class="card-vol">Vol. 1</span>
+                    <h2 class="card-title">月光に咲くシルクヴェールの花嫁</h2>
+                    <p class="card-date">2026.02.15</p>
+                </div>
+            </article>
+
+            <article class="dress-card" data-index="2">
+                <div class="card-image-wrap">
+                    <img src="photos/dress-002.webp" alt="Vol.2 — 水面に映る蝶々のドレス" loading="lazy">
+                    <div class="card-overlay">
+                        <span class="overlay-icon">✦</span>
+                        <span class="overlay-text">Details</span>
+                    </div>
+                </div>
+                <div class="card-info">
+                    <span class="card-vol">Vol. 2</span>
+                    <h2 class="card-title">水面に映る蝶々のドレス</h2>
+                    <p class="card-date">2026.02.16</p>
+                </div>
+            </article>
+
+            <article class="dress-card" data-index="3">
+                <div class="card-image-wrap">
+                    <img src="photos/dress-003.webp" alt="Vol.3 — 星降る夜のレースヴェール" loading="lazy">
+                    <div class="card-overlay">
+                        <span class="overlay-icon">✦</span>
+                        <span class="overlay-text">Details</span>
+                    </div>
+                </div>
+                <div class="card-info">
+                    <span class="card-vol">Vol. 3</span>
+                    <h2 class="card-title">星降る夜のレースヴェール</h2>
+                    <p class="card-date">2026.02.17</p>
+                </div>
+            </article>
+
+        </div>
+    </main>
+
+    <!-- ═══ Detail Modal ═══ -->
+    <div class="modal-backdrop" id="modal" aria-hidden="true" role="dialog">
+        <div class="modal-card">
+            <button class="modal-close" id="modalClose" aria-label="閉じる">&times;</button>
+            <div class="modal-image-wrap">
+                <img class="modal-image" id="modalImage" src="" alt="">
+            </div>
+            <div class="modal-body">
+                <span class="modal-vol" id="modalVol"></span>
+                <h2 class="modal-title" id="modalTitle"></h2>
+                <p class="modal-date" id="modalDate"></p>
+                <div class="modal-divider"></div>
+
+                <div class="modal-section">
+                    <h3 class="modal-section-title">
+                        <span class="section-icon">◇</span> デザインのポイント
+                    </h3>
+                    <div class="modal-points" id="modalPoints"></div>
+                </div>
+
+                <div class="modal-section">
+                    <h3 class="modal-section-title">
+                        <span class="section-icon">◇</span> インスピレーション
+                    </h3>
+                    <p class="modal-inspiration" id="modalInspiration"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══ Footer ═══ -->
+    <footer class="site-footer">
+        <div class="footer-ornament">— ✦ —</div>
+        <p class="footer-text">すべての画像はAIによって生成されたものです。実在するドレスデザインではありません。</p>
+        <p class="footer-brand">AI Wedding Dress Book</p>
+        <p class="footer-copy">&copy; 2026</p>
+    </footer>
+
+    <script>
+        // ──────────────────────────────────────
+        // ドレスデータ
+        // 新しいドレスを追加するとき、ここにもデータを追加してください。
+        // ──────────────────────────────────────
+        const dressData = [
+            {
+                vol: "Vol. 1",
+                title: "月光に咲くシルクヴェールの花嫁",
+                date: "2026.02.15",
+                image: "photos/dress-001.webp",
+                points: [
+                    {
+                        tag: "Silhouette",
+                        title: "月光を纏うカスケードシルエット",
+                        body: "腰元から裾にかけて流れ落ちるカスケードラインが、まるで月光の滝のような優雅さを演出。シルクオーガンジーの何層にも重なるレイヤーが、歩くたびに光を含み、幻想的な動きを生み出します。"
+                    },
+                    {
+                        tag: "Detail",
+                        title: "星屑を散りばめたビーディング",
+                        body: "ボディスからスカートにかけて施された手刺繍のビーディングは、夜空に瞬く星々をイメージ。スワロフスキークリスタルと淡水パールをランダムに配置し、光が当たるたびに異なる輝きを放ちます。"
+                    },
+                    {
+                        tag: "Material",
+                        title: "透き通るイリュージョンヴェール",
+                        body: "フランス製のシルクチュールで仕上げたカテドラルレングスのヴェールは、このドレスの真骨頂。極薄のチュールにほのかなシルバーの光沢を持たせることで、月光のような透明感を実現しました。"
+                    }
+                ],
+                inspiration: "クロード・ドビュッシーのピアノ曲「月の光（Clair de Lune）」と、ラファエル前派の画家ジョン・エヴァレット・ミレーが描く神秘的な女性像。静かに流れる旋律のように、柔らかなシルエットと光の粒が花嫁を包み込むデザインです。"
+            },
+            {
+                vol: "Vol. 2",
+                title: "水面に映る蝶々のドレス",
+                date: "2026.02.16",
+                image: "photos/dress-002.webp",
+                points: [
+                    {
+                        tag: "Silhouette",
+                        title: "水の流れを描くマーメイドライン",
+                        body: "ボディラインに沿って流れるマーメイドシルエットが、水面のゆらめきを表現。膝下からフレアするスカートは、蝶が羽を広げた瞬間を捉えたかのような動きのあるデザインです。"
+                    },
+                    {
+                        tag: "Detail",
+                        title: "蝶々モチーフの3Dアップリケ",
+                        body: "オーガンジーを手作業でカットし、立体的に仕立てた蝶々のモチーフが、ドレス全体にちりばめられています。風が吹くたびに蝶が舞い上がるような幻想的な演出です。"
+                    },
+                    {
+                        tag: "Material",
+                        title: "偏光シルクオーガンジー",
+                        body: "角度によって青から紫へと色が変化する特殊な偏光シルクオーガンジーを使用。水面に映る光のプリズムのような、刻一刻と変わる表情を持つ素材が、このドレスに命を吹き込みます。"
+                    }
+                ],
+                inspiration: "モネの「睡蓮」シリーズと、自然界の蝶のメタモルフォーゼ（変態）。水と光、そして変容の美しさをひとつのドレスに閉じ込めました。"
+            },
+            {
+                vol: "Vol. 3",
+                title: "星降る夜のレースヴェール",
+                date: "2026.02.17",
+                image: "photos/dress-003.webp",
+                points: [
+                    {
+                        tag: "Silhouette",
+                        title: "夜空を抱くAラインシルエット",
+                        body: "クラシカルなAラインをベースに、裾に向かって広がるたっぷりとしたボリュームが、満天の星空を包み込むようなスケール感を演出。背中の大胆なVカットが、前面のエレガンスとのコントラストを生みます。"
+                    },
+                    {
+                        tag: "Detail",
+                        title: "コンステレーション刺繍",
+                        body: "実在する星座をモチーフにした精緻な刺繍が、ドレス全面に広がります。すべての星をシルバースレッドとクリスタルで手刺繍し、照明の下では本物の星空のように輝きます。"
+                    },
+                    {
+                        tag: "Material",
+                        title: "ミッドナイトチュールのレイヤー",
+                        body: "最も深いネイビーから透明なアイボリーまで、5層のグラデーションチュールを重ねることで、夜空が明けていく瞬間を表現。レース部分にはフランス・リヨン製のシャンティイレースを贅沢に使用しています。"
+                    }
+                ],
+                inspiration: "ゴッホの「星月夜」と、古代ギリシャの天文学者ヒッパルコスが作成した星図。人類が夜空に見出してきた物語と美を、レースと刺繍で紡ぎ直しました。"
+            }
+        ];
+
+        // ──────────────────────────────────────
+        // Modal Logic
+        // ──────────────────────────────────────
+        const modal = document.getElementById('modal');
+        const modalImage = document.getElementById('modalImage');
+        const modalVol = document.getElementById('modalVol');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalDate = document.getElementById('modalDate');
+        const modalPoints = document.getElementById('modalPoints');
+        const modalInspo = document.getElementById('modalInspiration');
+        const modalClose = document.getElementById('modalClose');
+
+        function openModal(index) {
+            const d = dressData[index];
+            if (!d) return;
+
+            modalImage.src = d.image;
+            modalImage.alt = d.title;
+            modalVol.textContent = d.vol;
+            modalTitle.textContent = d.title;
+            modalDate.textContent = d.date;
+
+            modalPoints.innerHTML = d.points.map(p => `
+        <div class="point-card">
+          <span class="point-tag">${p.tag}</span>
+          <h4 class="point-title">${p.title}</h4>
+          <p class="point-body">${p.body}</p>
+        </div>
+      `).join('');
+
+            modalInspo.textContent = d.inspiration;
+
+            modal.classList.add('is-active');
+            modal.setAttribute('aria-hidden', 'false');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            modal.classList.remove('is-active');
+            modal.setAttribute('aria-hidden', 'true');
+            document.body.style.overflow = '';
+        }
+
+        document.querySelectorAll('.dress-card').forEach(card => {
+            card.addEventListener('click', () => {
+                const idx = parseInt(card.dataset.index, 10) - 1;
+                openModal(idx);
+            });
+        });
+
+        modalClose.addEventListener('click', closeModal);
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) closeModal();
+        });
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeModal();
+        });
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,568 @@
+/* ═══════════════════════════════════════════════════
+   AI Wedding Dress Book — Style
+   Elegant, white-based gallery with floating shadows
+   ═══════════════════════════════════════════════════ */
+
+/* ── Reset & Base ── */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --white:       #FFFFFF;
+  --ivory:       #FAFAF8;
+  --cream:       #F7F5F0;
+  --champagne:   #F0EBE1;
+  --gold:        #B8976A;
+  --gold-light:  #D4C4A0;
+  --gold-faint:  #E8DFC8;
+  --rose:        #C9A0A0;
+  --rose-light:  #E8D0D0;
+  --charcoal:    #2A2A2A;
+  --warm-gray:   #7A7470;
+  --light-gray:  #B0AAA4;
+  --shadow-soft:  0 8px 40px rgba(100, 80, 60, 0.08);
+  --shadow-hover: 0 20px 60px rgba(100, 80, 60, 0.14);
+  --shadow-float: 0 30px 80px rgba(100, 80, 60, 0.18);
+  --radius:      16px;
+  --radius-lg:   24px;
+  --transition:  0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Noto Serif JP', 'Georgia', serif;
+  background: var(--ivory);
+  color: var(--charcoal);
+  line-height: 1.8;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+/* ═══════════════════════════════════════
+   HEADER
+   ═══════════════════════════════════════ */
+.site-header {
+  position: relative;
+  text-align: center;
+  padding: 6rem 2rem 5rem;
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(232, 223, 200, 0.3) 0%, transparent 60%),
+    var(--white);
+  overflow: hidden;
+}
+
+.site-header::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  max-width: 600px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold-faint), var(--gold-light), var(--gold-faint), transparent);
+}
+
+.header-eyebrow {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.45em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1rem;
+}
+
+.header-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2.2rem, 6vw, 4rem);
+  font-weight: 300;
+  letter-spacing: 0.12em;
+  color: var(--charcoal);
+  line-height: 1.2;
+  margin-bottom: 0.6rem;
+}
+
+.header-subtitle {
+  font-family: 'Noto Serif JP', serif;
+  font-size: clamp(0.8rem, 2vw, 1rem);
+  font-weight: 200;
+  letter-spacing: 0.3em;
+  color: var(--warm-gray);
+}
+
+.header-line {
+  width: 50px;
+  height: 1px;
+  background: var(--gold);
+  margin: 2rem auto 0;
+}
+
+/* ═══════════════════════════════════════
+   GALLERY GRID
+   ═══════════════════════════════════════ */
+.gallery-section {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 4rem 2rem 6rem;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 2.5rem;
+}
+
+/* ═══════════════════════════════════════
+   DRESS CARD
+   ═══════════════════════════════════════ */
+.dress-card {
+  cursor: pointer;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: var(--white);
+  box-shadow: var(--shadow-soft);
+  transition:
+    transform var(--transition),
+    box-shadow var(--transition);
+}
+
+.dress-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-hover);
+}
+
+.dress-card:active {
+  transform: translateY(-4px);
+}
+
+/* Card Image */
+.card-image-wrap {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 3 / 4;
+  background: var(--cream);
+}
+
+.card-image-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.dress-card:hover .card-image-wrap img {
+  transform: scale(1.04);
+}
+
+/* Overlay */
+.card-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  background: rgba(42, 42, 42, 0.15);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.dress-card:hover .card-overlay {
+  opacity: 1;
+}
+
+.overlay-icon {
+  font-size: 1.2rem;
+  color: var(--white);
+  text-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+.overlay-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--white);
+  text-shadow: 0 1px 6px rgba(0,0,0,0.2);
+}
+
+/* Card Info */
+.card-info {
+  padding: 1.5rem 1.8rem 1.8rem;
+}
+
+.card-vol {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.card-title {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 1.05rem;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  color: var(--charcoal);
+  margin: 0.5rem 0 0.4rem;
+  line-height: 1.6;
+}
+
+.card-date {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: var(--light-gray);
+  letter-spacing: 0.15em;
+}
+
+/* ═══════════════════════════════════════
+   MODAL
+   ═══════════════════════════════════════ */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(42, 42, 42, 0.4);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.35s ease, visibility 0.35s ease;
+}
+
+.modal-backdrop.is-active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal-card {
+  position: relative;
+  width: 92vw;
+  max-width: 700px;
+  max-height: 90vh;
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-float);
+  overflow-y: auto;
+  transform: translateY(30px) scale(0.97);
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.modal-backdrop.is-active .modal-card {
+  transform: translateY(0) scale(1);
+}
+
+/* Scrollbar */
+.modal-card::-webkit-scrollbar {
+  width: 4px;
+}
+.modal-card::-webkit-scrollbar-track {
+  background: transparent;
+}
+.modal-card::-webkit-scrollbar-thumb {
+  background: var(--gold-faint);
+  border-radius: 4px;
+}
+
+/* Close Button */
+.modal-close {
+  position: sticky;
+  top: 0;
+  float: right;
+  z-index: 10;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(6px);
+  border: none;
+  border-radius: 50%;
+  font-size: 1.6rem;
+  font-weight: 300;
+  color: var(--warm-gray);
+  cursor: pointer;
+  margin: 1rem 1rem 0 0;
+  transition: color 0.2s, background 0.2s;
+}
+
+.modal-close:hover {
+  color: var(--charcoal);
+  background: rgba(255, 255, 255, 1);
+}
+
+/* Modal Image */
+.modal-image-wrap {
+  margin: -44px 0 0 0;
+  aspect-ratio: 3 / 4;
+  max-height: 500px;
+  overflow: hidden;
+  background: var(--cream);
+}
+
+.modal-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Modal Body */
+.modal-body {
+  padding: 2rem 2.5rem 2.5rem;
+}
+
+.modal-vol {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.modal-title {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 1.4rem;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  color: var(--charcoal);
+  margin: 0.5rem 0 0.3rem;
+  line-height: 1.6;
+}
+
+.modal-date {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.78rem;
+  font-weight: 400;
+  color: var(--light-gray);
+  letter-spacing: 0.15em;
+}
+
+.modal-divider {
+  width: 36px;
+  height: 1px;
+  background: var(--gold-light);
+  margin: 1.8rem 0;
+}
+
+/* Modal Section */
+.modal-section {
+  margin-bottom: 2rem;
+}
+
+.modal-section:last-child {
+  margin-bottom: 0;
+}
+
+.modal-section-title {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  color: var(--charcoal);
+  margin-bottom: 1.2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.section-icon {
+  color: var(--gold);
+  font-size: 0.65rem;
+}
+
+/* Design Point Cards (in modal) */
+.modal-points {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.point-card {
+  padding: 1.4rem 1.6rem;
+  background: var(--cream);
+  border-radius: var(--radius);
+  border-left: 3px solid var(--gold-light);
+}
+
+.point-tag {
+  display: inline-block;
+  font-family: 'Zen Kaku Gothic New', sans-serif;
+  font-size: 0.6rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  background: rgba(184, 151, 106, 0.08);
+  padding: 0.2rem 0.7rem;
+  border-radius: 12px;
+  margin-bottom: 0.5rem;
+}
+
+.point-title {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 0.95rem;
+  font-weight: 400;
+  color: var(--charcoal);
+  margin-bottom: 0.5rem;
+  line-height: 1.5;
+}
+
+.point-body {
+  font-family: 'Zen Kaku Gothic New', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 300;
+  line-height: 1.9;
+  color: var(--warm-gray);
+}
+
+/* Inspiration */
+.modal-inspiration {
+  font-family: 'Zen Kaku Gothic New', sans-serif;
+  font-size: 0.88rem;
+  font-weight: 300;
+  line-height: 2;
+  color: var(--warm-gray);
+  padding: 1.4rem 1.6rem;
+  background: linear-gradient(135deg, #FBF8F2 0%, #F5EFE4 100%);
+  border-radius: var(--radius);
+  border-left: 3px solid var(--rose-light);
+  position: relative;
+}
+
+.modal-inspiration::before {
+  content: '"';
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.5rem;
+  font-weight: 300;
+  color: var(--gold-faint);
+  position: absolute;
+  top: 0.4rem;
+  right: 1rem;
+  line-height: 1;
+}
+
+/* ═══════════════════════════════════════
+   FOOTER
+   ═══════════════════════════════════════ */
+.site-footer {
+  text-align: center;
+  padding: 3rem 2rem 4rem;
+  background: var(--white);
+  border-top: 1px solid var(--champagne);
+}
+
+.footer-ornament {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.9rem;
+  color: var(--gold-light);
+  letter-spacing: 0.5em;
+  margin-bottom: 1rem;
+}
+
+.footer-text {
+  font-family: 'Zen Kaku Gothic New', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 300;
+  color: var(--light-gray);
+  line-height: 2;
+  letter-spacing: 0.05em;
+}
+
+.footer-brand {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.1rem;
+  font-weight: 400;
+  font-style: italic;
+  letter-spacing: 0.2em;
+  color: var(--rose);
+  margin-top: 1rem;
+}
+
+.footer-copy {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.7rem;
+  color: var(--light-gray);
+  margin-top: 0.4rem;
+  letter-spacing: 0.1em;
+}
+
+/* ═══════════════════════════════════════
+   RESPONSIVE
+   ═══════════════════════════════════════ */
+@media (max-width: 700px) {
+  .site-header {
+    padding: 4rem 1.5rem 3.5rem;
+  }
+
+  .gallery-section {
+    padding: 2.5rem 1rem 4rem;
+  }
+
+  .gallery-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .modal-body {
+    padding: 1.5rem 1.5rem 2rem;
+  }
+
+  .modal-title {
+    font-size: 1.2rem;
+  }
+}
+
+@media (min-width: 1000px) {
+  .gallery-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* ═══════════════════════════════════════
+   ANIMATIONS
+   ═══════════════════════════════════════ */
+@keyframes cardFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.dress-card {
+  animation: cardFadeIn 0.7s ease both;
+}
+
+.dress-card:nth-child(1) { animation-delay: 0.1s; }
+.dress-card:nth-child(2) { animation-delay: 0.22s; }
+.dress-card:nth-child(3) { animation-delay: 0.34s; }
+.dress-card:nth-child(4) { animation-delay: 0.46s; }
+.dress-card:nth-child(5) { animation-delay: 0.58s; }
+.dress-card:nth-child(6) { animation-delay: 0.70s; }
