@@ -171,14 +171,90 @@ img {
 }
 
 /* ═══════════════════════════════════════
-   MASONRY GALLERY
+   GALLERY WRAPPER
    ═══════════════════════════════════════ */
-.gallery-section {
+.gallery-wrapper {
   max-width: 1320px;
   margin: 0 auto;
-  padding: 4rem 1.5rem 6rem;
+  padding: 2rem 1.5rem 4rem;
 }
 
+/* ═══════════════════════════════════════
+   COLLECTION SECTION
+   ═══════════════════════════════════════ */
+.collection-section {
+  margin-bottom: 1rem;
+}
+
+.collection-section:last-child {
+  margin-bottom: 0;
+}
+
+.collection-header {
+  text-align: center;
+  padding: 3.5rem 1.5rem 2.8rem;
+  position: relative;
+}
+
+/* Top divider line */
+.collection-divider-line {
+  display: block;
+  width: 100%;
+  max-width: 400px;
+  height: 1px;
+  margin: 0 auto 2.2rem;
+  background: linear-gradient(90deg, transparent, var(--gold-light), var(--gold), var(--gold-light), transparent);
+  border: none;
+}
+
+.collection-eyebrow {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.62rem;
+  font-weight: 500;
+  letter-spacing: 0.55em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.8rem;
+}
+
+.collection-title {
+  font-family: 'Noto Serif JP', serif;
+  font-size: clamp(1.4rem, 3.5vw, 2rem);
+  font-weight: 400;
+  letter-spacing: 0.2em;
+  color: var(--charcoal);
+  line-height: 1.4;
+  margin-bottom: 1rem;
+}
+
+.collection-desc {
+  font-family: 'Zen Kaku Gothic New', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 300;
+  letter-spacing: 0.06em;
+  line-height: 2;
+  color: var(--warm-gray);
+  max-width: 600px;
+  margin: 0 auto 1.8rem;
+}
+
+/* Bottom divider line (thinner) */
+.collection-header::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 1px;
+  background: var(--gold-faint);
+  margin: 0 auto;
+}
+
+.collection-grid {
+  padding: 0 0.5rem;
+}
+
+/* ═══════════════════════════════════════
+   MASONRY (inside each collection)
+   ═══════════════════════════════════════ */
 .masonry {
   columns: 3;
   column-gap: 1.8rem;
@@ -758,8 +834,20 @@ img {
     display: none;
   }
 
-  .gallery-section {
-    padding: 2.5rem 0.75rem 4rem;
+  .gallery-wrapper {
+    padding: 1.5rem 0.75rem 3rem;
+  }
+
+  .collection-header {
+    padding: 2.5rem 1rem 2rem;
+  }
+
+  .collection-title {
+    letter-spacing: 0.12em;
+  }
+
+  .collection-desc {
+    font-size: 0.78rem;
   }
 
   .masonry {
