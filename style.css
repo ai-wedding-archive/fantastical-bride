@@ -1,34 +1,37 @@
 /* ═══════════════════════════════════════════════════
-   AI Wedding Dress Book — Style
-   Elegant, white-based gallery with floating shadows
+   AI Wedding Dress Book — "The Ethereal Boutique"
+   High-end masonry gallery with lightbox & sticky header
    ═══════════════════════════════════════════════════ */
 
 /* ── Reset & Base ── */
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
 :root {
-  --white:       #FFFFFF;
-  --ivory:       #FAFAF8;
-  --cream:       #F7F5F0;
-  --champagne:   #F0EBE1;
-  --gold:        #B8976A;
-  --gold-light:  #D4C4A0;
-  --gold-faint:  #E8DFC8;
-  --rose:        #C9A0A0;
-  --rose-light:  #E8D0D0;
-  --charcoal:    #2A2A2A;
-  --warm-gray:   #7A7470;
-  --light-gray:  #B0AAA4;
-  --shadow-soft:  0 8px 40px rgba(100, 80, 60, 0.08);
+  --white: #FFFFFF;
+  --ivory: #FAFAF8;
+  --cream: #F7F5F0;
+  --champagne: #F0EBE1;
+  --gold: #B8976A;
+  --gold-light: #D4C4A0;
+  --gold-faint: #E8DFC8;
+  --rose: #C9A0A0;
+  --rose-light: #E8D0D0;
+  --charcoal: #2A2A2A;
+  --warm-gray: #7A7470;
+  --light-gray: #B0AAA4;
+  --shadow-soft: 0 8px 40px rgba(100, 80, 60, 0.08);
   --shadow-hover: 0 20px 60px rgba(100, 80, 60, 0.14);
   --shadow-float: 0 30px 80px rgba(100, 80, 60, 0.18);
-  --radius:      16px;
-  --radius-lg:   24px;
-  --transition:  0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --radius: 16px;
+  --radius-lg: 24px;
+  --transition: 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --header-h: 60px;
 }
 
 html {
@@ -37,10 +40,11 @@ html {
 }
 
 body {
-  font-family: 'Noto Serif JP', 'Georgia', serif;
+  font-family: 'Zen Kaku Gothic New', 'Noto Sans JP', sans-serif;
   background: var(--ivory);
   color: var(--charcoal);
   line-height: 1.8;
+  letter-spacing: 0.03em;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
@@ -52,19 +56,74 @@ img {
 }
 
 /* ═══════════════════════════════════════
-   HEADER
+   STICKY HEADER ("scroll-following")
    ═══════════════════════════════════════ */
 .site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 900;
+  height: var(--header-h);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.82);
+  backdrop-filter: blur(18px) saturate(1.6);
+  -webkit-backdrop-filter: blur(18px) saturate(1.6);
+  border-bottom: 1px solid rgba(212, 196, 160, 0.25);
+  transition: background 0.35s, box-shadow 0.35s;
+}
+
+.site-header.is-scrolled {
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 2px 24px rgba(100, 80, 60, 0.06);
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+
+.header-brand {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.15rem;
+  font-weight: 400;
+  letter-spacing: 0.18em;
+  color: var(--charcoal);
+  white-space: nowrap;
+}
+
+.header-sep {
+  width: 1px;
+  height: 18px;
+  background: var(--gold-light);
+}
+
+.header-tagline {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 0.65rem;
+  font-weight: 300;
+  letter-spacing: 0.22em;
+  color: var(--warm-gray);
+  white-space: nowrap;
+}
+
+/* ═══════════════════════════════════════
+   HERO SECTION (replaces old tall header)
+   ═══════════════════════════════════════ */
+.hero {
   position: relative;
   text-align: center;
-  padding: 6rem 2rem 5rem;
+  padding: 10rem 2rem 5.5rem;
   background:
-    radial-gradient(ellipse at 50% 0%, rgba(232, 223, 200, 0.3) 0%, transparent 60%),
+    radial-gradient(ellipse at 50% 0%, rgba(232, 223, 200, 0.2) 0%, transparent 55%),
     var(--white);
   overflow: hidden;
 }
 
-.site-header::after {
+.hero::after {
   content: '';
   position: absolute;
   bottom: 0;
@@ -76,35 +135,35 @@ img {
   background: linear-gradient(90deg, transparent, var(--gold-faint), var(--gold-light), var(--gold-faint), transparent);
 }
 
-.header-eyebrow {
+.hero-eyebrow {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 0.72rem;
+  font-size: 0.68rem;
   font-weight: 500;
-  letter-spacing: 0.45em;
+  letter-spacing: 0.55em;
   text-transform: uppercase;
   color: var(--gold);
   margin-bottom: 1rem;
 }
 
-.header-title {
+.hero-title {
   font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(2.2rem, 6vw, 4rem);
+  font-size: clamp(2.4rem, 6vw, 4.2rem);
   font-weight: 300;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.14em;
   color: var(--charcoal);
   line-height: 1.2;
   margin-bottom: 0.6rem;
 }
 
-.header-subtitle {
+.hero-subtitle {
   font-family: 'Noto Serif JP', serif;
-  font-size: clamp(0.8rem, 2vw, 1rem);
+  font-size: clamp(0.78rem, 2vw, 0.95rem);
   font-weight: 200;
-  letter-spacing: 0.3em;
+  letter-spacing: 0.35em;
   color: var(--warm-gray);
 }
 
-.header-line {
+.hero-line {
   width: 50px;
   height: 1px;
   background: var(--gold);
@@ -112,24 +171,25 @@ img {
 }
 
 /* ═══════════════════════════════════════
-   GALLERY GRID
+   MASONRY GALLERY
    ═══════════════════════════════════════ */
 .gallery-section {
-  max-width: 1200px;
+  max-width: 1320px;
   margin: 0 auto;
-  padding: 4rem 2rem 6rem;
+  padding: 4rem 1.5rem 6rem;
 }
 
-.gallery-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-  gap: 2.5rem;
+.masonry {
+  columns: 3;
+  column-gap: 1.8rem;
 }
 
 /* ═══════════════════════════════════════
-   DRESS CARD
+   DRESS CARD (masonry items)
    ═══════════════════════════════════════ */
 .dress-card {
+  break-inside: avoid;
+  margin-bottom: 1.8rem;
   cursor: pointer;
   border-radius: var(--radius-lg);
   overflow: hidden;
@@ -138,48 +198,60 @@ img {
   transition:
     transform var(--transition),
     box-shadow var(--transition);
+  /* fade-in via IntersectionObserver */
+  opacity: 0;
+  transform: translateY(32px);
+}
+
+.dress-card.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+  transition:
+    opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow var(--transition);
 }
 
 .dress-card:hover {
-  transform: translateY(-8px);
+  transform: translateY(-6px);
   box-shadow: var(--shadow-hover);
 }
 
 .dress-card:active {
-  transform: translateY(-4px);
+  transform: translateY(-3px);
 }
 
 /* Card Image */
 .card-image-wrap {
   position: relative;
   overflow: hidden;
-  aspect-ratio: 3 / 4;
   background: var(--cream);
 }
 
 .card-image-wrap img {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.6s ease;
+  height: auto;
+  display: block;
+  transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .dress-card:hover .card-image-wrap img {
-  transform: scale(1.04);
+  transform: scale(1.05);
 }
 
-/* Overlay */
+/* Overlay — slides up from bottom on hover */
 .card-overlay {
   position: absolute;
   inset: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  gap: 0.4rem;
-  background: rgba(42, 42, 42, 0.15);
+  justify-content: flex-end;
+  padding-bottom: 2rem;
+  gap: 0.35rem;
+  background: linear-gradient(to top, rgba(30, 25, 20, 0.55) 0%, rgba(30, 25, 20, 0) 50%);
   opacity: 0;
-  transition: opacity 0.4s ease;
+  transition: opacity 0.45s ease;
 }
 
 .dress-card:hover .card-overlay {
@@ -187,55 +259,67 @@ img {
 }
 
 .overlay-icon {
-  font-size: 1.2rem;
+  font-size: 1rem;
   color: var(--white);
-  text-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  opacity: 0.85;
+  transform: translateY(10px);
+  transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+.dress-card:hover .overlay-icon {
+  transform: translateY(0);
+  opacity: 1;
 }
 
 .overlay-text {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 0.8rem;
+  font-size: 0.72rem;
   font-weight: 500;
-  letter-spacing: 0.3em;
+  letter-spacing: 0.35em;
   text-transform: uppercase;
   color: var(--white);
-  text-shadow: 0 1px 6px rgba(0,0,0,0.2);
+  transform: translateY(10px);
+  transition: transform 0.5s ease 0.05s;
+}
+
+.dress-card:hover .overlay-text {
+  transform: translateY(0);
 }
 
 /* Card Info */
 .card-info {
-  padding: 1.5rem 1.8rem 1.8rem;
+  padding: 1.3rem 1.5rem 1.5rem;
 }
 
 .card-vol {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 0.68rem;
+  font-size: 0.64rem;
   font-weight: 500;
-  letter-spacing: 0.35em;
+  letter-spacing: 0.4em;
   text-transform: uppercase;
   color: var(--gold);
 }
 
 .card-title {
   font-family: 'Noto Serif JP', serif;
-  font-size: 1.05rem;
+  font-size: 0.95rem;
   font-weight: 400;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.08em;
   color: var(--charcoal);
-  margin: 0.5rem 0 0.4rem;
+  margin: 0.4rem 0 0.3rem;
   line-height: 1.6;
 }
 
 .card-date {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 0.75rem;
+  font-size: 0.72rem;
   font-weight: 400;
   color: var(--light-gray);
-  letter-spacing: 0.15em;
+  letter-spacing: 0.18em;
 }
 
 /* ═══════════════════════════════════════
-   MODAL
+   DETAIL MODAL (design points & inspiration)
    ═══════════════════════════════════════ */
 .modal-backdrop {
   position: fixed;
@@ -245,8 +329,8 @@ img {
   align-items: center;
   justify-content: center;
   background: rgba(42, 42, 42, 0.4);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.35s ease, visibility 0.35s ease;
@@ -261,7 +345,7 @@ img {
   position: relative;
   width: 92vw;
   max-width: 700px;
-  max-height: 90vh;
+  max-height: 88vh;
   background: var(--white);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-float);
@@ -274,19 +358,19 @@ img {
   transform: translateY(0) scale(1);
 }
 
-/* Scrollbar */
 .modal-card::-webkit-scrollbar {
   width: 4px;
 }
+
 .modal-card::-webkit-scrollbar-track {
   background: transparent;
 }
+
 .modal-card::-webkit-scrollbar-thumb {
   background: var(--gold-faint);
   border-radius: 4px;
 }
 
-/* Close Button */
 .modal-close {
   position: sticky;
   top: 0;
@@ -314,10 +398,8 @@ img {
   background: rgba(255, 255, 255, 1);
 }
 
-/* Modal Image */
 .modal-image-wrap {
   margin: -44px 0 0 0;
-  aspect-ratio: 3 / 4;
   max-height: 500px;
   overflow: hidden;
   background: var(--cream);
@@ -329,23 +411,22 @@ img {
   object-fit: cover;
 }
 
-/* Modal Body */
 .modal-body {
   padding: 2rem 2.5rem 2.5rem;
 }
 
 .modal-vol {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 0.7rem;
+  font-size: 0.68rem;
   font-weight: 500;
-  letter-spacing: 0.4em;
+  letter-spacing: 0.45em;
   text-transform: uppercase;
   color: var(--gold);
 }
 
 .modal-title {
   font-family: 'Noto Serif JP', serif;
-  font-size: 1.4rem;
+  font-size: 1.35rem;
   font-weight: 400;
   letter-spacing: 0.1em;
   color: var(--charcoal);
@@ -355,10 +436,10 @@ img {
 
 .modal-date {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 0.78rem;
+  font-size: 0.76rem;
   font-weight: 400;
   color: var(--light-gray);
-  letter-spacing: 0.15em;
+  letter-spacing: 0.18em;
 }
 
 .modal-divider {
@@ -368,7 +449,6 @@ img {
   margin: 1.8rem 0;
 }
 
-/* Modal Section */
 .modal-section {
   margin-bottom: 2rem;
 }
@@ -379,9 +459,9 @@ img {
 
 .modal-section-title {
   font-family: 'Noto Serif JP', serif;
-  font-size: 0.85rem;
+  font-size: 0.82rem;
   font-weight: 500;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.18em;
   color: var(--charcoal);
   margin-bottom: 1.2rem;
   display: flex;
@@ -391,10 +471,9 @@ img {
 
 .section-icon {
   color: var(--gold);
-  font-size: 0.65rem;
+  font-size: 0.6rem;
 }
 
-/* Design Point Cards (in modal) */
 .modal-points {
   display: flex;
   flex-direction: column;
@@ -402,7 +481,7 @@ img {
 }
 
 .point-card {
-  padding: 1.4rem 1.6rem;
+  padding: 1.3rem 1.5rem;
   background: var(--cream);
   border-radius: var(--radius);
   border-left: 3px solid var(--gold-light);
@@ -411,42 +490,41 @@ img {
 .point-tag {
   display: inline-block;
   font-family: 'Zen Kaku Gothic New', sans-serif;
-  font-size: 0.6rem;
+  font-size: 0.58rem;
   font-weight: 500;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
   color: var(--gold);
   background: rgba(184, 151, 106, 0.08);
-  padding: 0.2rem 0.7rem;
+  padding: 0.18rem 0.65rem;
   border-radius: 12px;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.45rem;
 }
 
 .point-title {
   font-family: 'Noto Serif JP', serif;
-  font-size: 0.95rem;
+  font-size: 0.92rem;
   font-weight: 400;
   color: var(--charcoal);
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.45rem;
   line-height: 1.5;
 }
 
 .point-body {
   font-family: 'Zen Kaku Gothic New', sans-serif;
-  font-size: 0.82rem;
+  font-size: 0.8rem;
   font-weight: 300;
-  line-height: 1.9;
+  line-height: 1.95;
   color: var(--warm-gray);
 }
 
-/* Inspiration */
 .modal-inspiration {
   font-family: 'Zen Kaku Gothic New', sans-serif;
-  font-size: 0.88rem;
+  font-size: 0.85rem;
   font-weight: 300;
   line-height: 2;
   color: var(--warm-gray);
-  padding: 1.4rem 1.6rem;
+  padding: 1.3rem 1.5rem;
   background: linear-gradient(135deg, #FBF8F2 0%, #F5EFE4 100%);
   border-radius: var(--radius);
   border-left: 3px solid var(--rose-light);
@@ -466,103 +544,263 @@ img {
 }
 
 /* ═══════════════════════════════════════
+   LIGHTBOX (full-screen image viewer)
+   ═══════════════════════════════════════ */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(18, 16, 14, 0.92);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.4s ease, visibility 0.4s ease;
+  cursor: zoom-out;
+}
+
+.lightbox.is-active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.lightbox-img {
+  max-width: 92vw;
+  max-height: 90vh;
+  object-fit: contain;
+  border-radius: 6px;
+  box-shadow: 0 20px 80px rgba(0, 0, 0, 0.4);
+  transform: scale(0.92);
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+  cursor: default;
+}
+
+.lightbox.is-active .lightbox-img {
+  transform: scale(1);
+}
+
+/* Navigation arrows */
+.lightbox-prev,
+.lightbox-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  width: 52px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 50%;
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 1.3rem;
+  cursor: pointer;
+  transition: background 0.25s, color 0.25s, border-color 0.25s;
+}
+
+.lightbox-prev {
+  left: 1.5rem;
+}
+
+.lightbox-next {
+  right: 1.5rem;
+}
+
+.lightbox-prev:hover,
+.lightbox-next:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.25);
+  color: #fff;
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 1.2rem;
+  right: 1.5rem;
+  z-index: 10;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 1.8rem;
+  font-weight: 300;
+  cursor: pointer;
+  transition: color 0.25s;
+}
+
+.lightbox-close:hover {
+  color: #fff;
+}
+
+.lightbox-caption {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  pointer-events: none;
+}
+
+.lightbox-vol {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.5em;
+  text-transform: uppercase;
+  color: rgba(184, 151, 106, 0.85);
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+.lightbox-title {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 0.95rem;
+  font-weight: 300;
+  letter-spacing: 0.12em;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+/* ═══════════════════════════════════════
    FOOTER
    ═══════════════════════════════════════ */
 .site-footer {
   text-align: center;
-  padding: 3rem 2rem 4rem;
+  padding: 3rem 2rem 3.5rem;
   background: var(--white);
   border-top: 1px solid var(--champagne);
 }
 
 .footer-ornament {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   color: var(--gold-light);
-  letter-spacing: 0.5em;
-  margin-bottom: 1rem;
+  letter-spacing: 0.55em;
+  margin-bottom: 0.8rem;
 }
 
 .footer-text {
   font-family: 'Zen Kaku Gothic New', sans-serif;
-  font-size: 0.72rem;
+  font-size: 0.7rem;
   font-weight: 300;
   color: var(--light-gray);
   line-height: 2;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.06em;
 }
 
 .footer-brand {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 1.1rem;
+  font-size: 1.05rem;
   font-weight: 400;
   font-style: italic;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.22em;
   color: var(--rose);
-  margin-top: 1rem;
+  margin-top: 0.8rem;
 }
 
 .footer-copy {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 0.7rem;
+  font-size: 0.68rem;
   color: var(--light-gray);
-  margin-top: 0.4rem;
-  letter-spacing: 0.1em;
+  margin-top: 0.3rem;
+  letter-spacing: 0.12em;
 }
 
 /* ═══════════════════════════════════════
    RESPONSIVE
    ═══════════════════════════════════════ */
-@media (max-width: 700px) {
-  .site-header {
-    padding: 4rem 1.5rem 3.5rem;
+
+/* Tablet (2 columns) */
+@media (max-width: 1000px) {
+  .masonry {
+    columns: 2;
+    column-gap: 1.4rem;
+  }
+
+  .dress-card {
+    margin-bottom: 1.4rem;
+  }
+}
+
+/* Mobile (1 column) */
+@media (max-width: 600px) {
+  :root {
+    --header-h: 52px;
+  }
+
+  .hero {
+    padding: 8rem 1.2rem 3.5rem;
+  }
+
+  .hero-eyebrow {
+    font-size: 0.6rem;
+    letter-spacing: 0.4em;
+  }
+
+  .header-brand {
+    font-size: 0.95rem;
+    letter-spacing: 0.12em;
+  }
+
+  .header-tagline {
+    display: none;
+  }
+
+  .header-sep {
+    display: none;
   }
 
   .gallery-section {
-    padding: 2.5rem 1rem 4rem;
+    padding: 2.5rem 0.75rem 4rem;
   }
 
-  .gallery-grid {
-    grid-template-columns: 1fr;
-    gap: 2rem;
+  .masonry {
+    columns: 1;
+    column-gap: 0;
+  }
+
+  .dress-card {
+    margin-bottom: 1.6rem;
+  }
+
+  .modal-card {
+    width: 96vw;
+    max-height: 92vh;
   }
 
   .modal-body {
-    padding: 1.5rem 1.5rem 2rem;
+    padding: 1.4rem 1.3rem 1.8rem;
   }
 
   .modal-title {
-    font-size: 1.2rem;
+    font-size: 1.15rem;
+  }
+
+  .lightbox-prev {
+    left: 0.5rem;
+    width: 42px;
+    height: 42px;
+  }
+
+  .lightbox-next {
+    right: 0.5rem;
+    width: 42px;
+    height: 42px;
   }
 }
 
-@media (min-width: 1000px) {
-  .gallery-grid {
-    grid-template-columns: repeat(3, 1fr);
+/* Large desktop (3+ columns tighten up) */
+@media (min-width: 1200px) {
+  .masonry {
+    columns: 3;
+    column-gap: 2rem;
   }
 }
-
-/* ═══════════════════════════════════════
-   ANIMATIONS
-   ═══════════════════════════════════════ */
-@keyframes cardFadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(24px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.dress-card {
-  animation: cardFadeIn 0.7s ease both;
-}
-
-.dress-card:nth-child(1) { animation-delay: 0.1s; }
-.dress-card:nth-child(2) { animation-delay: 0.22s; }
-.dress-card:nth-child(3) { animation-delay: 0.34s; }
-.dress-card:nth-child(4) { animation-delay: 0.46s; }
-.dress-card:nth-child(5) { animation-delay: 0.58s; }
-.dress-card:nth-child(6) { animation-delay: 0.70s; }
