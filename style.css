@@ -898,11 +898,314 @@ img {
 }
 
 /* ═══════════════════════════════════════
+   SIDEBAR NAVIGATION
+   ═══════════════════════════════════════ */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 260px;
+  height: 100vh;
+  background: rgba(255, 255, 255, 0.97);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-right: 0.5px solid var(--gold-faint);
+  z-index: 1500;
+  display: flex;
+  flex-direction: column;
+  padding: 2.5rem 1.8rem 2rem;
+  box-sizing: border-box;
+  overflow-y: auto;
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.sidebar-brand {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.15rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  color: var(--charcoal);
+  text-decoration: none;
+  line-height: 1.4;
+  margin-bottom: 0.3rem;
+}
+
+.sidebar-brand:hover {
+  color: var(--rose);
+}
+
+.sidebar-tagline {
+  font-family: 'Zen Kaku Gothic New', sans-serif;
+  font-size: 0.62rem;
+  font-weight: 300;
+  color: var(--light-gray);
+  letter-spacing: 0.1em;
+  margin-bottom: 2.5rem;
+}
+
+.sidebar-divider {
+  width: 30px;
+  height: 0.5px;
+  background: var(--gold-faint);
+  margin-bottom: 2rem;
+}
+
+.sidebar-label {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--light-gray);
+  margin-bottom: 1.2rem;
+}
+
+.sidebar-nav {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  flex: 1;
+}
+
+.sidebar-nav li {
+  margin-bottom: 0.15rem;
+}
+
+.sidebar-link {
+  display: block;
+  font-family: 'Noto Serif JP', serif;
+  font-size: 0.82rem;
+  font-weight: 400;
+  color: var(--charcoal);
+  text-decoration: none;
+  padding: 0.65rem 0.9rem;
+  border-radius: 6px;
+  letter-spacing: 0.04em;
+  transition: background 0.2s, color 0.2s;
+  line-height: 1.5;
+}
+
+.sidebar-link:hover {
+  background: var(--cream);
+  color: var(--rose);
+}
+
+.sidebar-link.is-active {
+  background: linear-gradient(135deg, rgba(183, 148, 115, 0.08), rgba(183, 148, 115, 0.04));
+  color: var(--gold);
+  font-weight: 500;
+  border-left: 2px solid var(--gold);
+  padding-left: calc(0.9rem - 2px);
+}
+
+.sidebar-link-sub {
+  font-family: 'Zen Kaku Gothic New', sans-serif;
+  font-size: 0.62rem;
+  font-weight: 300;
+  color: var(--light-gray);
+  display: block;
+  margin-top: 0.15rem;
+}
+
+.sidebar-footer {
+  margin-top: auto;
+  padding-top: 2rem;
+  border-top: 0.5px solid var(--gold-faint);
+}
+
+.sidebar-footer-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.62rem;
+  color: var(--light-gray);
+  letter-spacing: 0.1em;
+  font-style: italic;
+}
+
+/* Sidebar overlay (mobile) */
+.sidebar-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(18, 16, 14, 0.45);
+  z-index: 1400;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+
+.sidebar-overlay.is-visible {
+  display: block;
+  opacity: 1;
+}
+
+/* Hamburger toggle button */
+.sidebar-toggle {
+  display: none;
+  position: fixed;
+  top: 14px;
+  left: 14px;
+  z-index: 1600;
+  width: 42px;
+  height: 42px;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 0.5px solid var(--gold-faint);
+  border-radius: 8px;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 5px;
+  transition: background 0.2s;
+}
+
+.sidebar-toggle span {
+  display: block;
+  width: 18px;
+  height: 1.5px;
+  background: var(--charcoal);
+  border-radius: 1px;
+  transition: transform 0.3s, opacity 0.3s;
+}
+
+.sidebar-toggle:hover {
+  background: var(--cream);
+}
+
+/* Site content wrapper — offset by sidebar width */
+.site-content {
+  margin-left: 260px;
+  min-height: 100vh;
+  transition: margin-left 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ═══════════════════════════════════════
+   PORTAL / INDEX PAGE
+   ═══════════════════════════════════════ */
+.portal-intro {
+  text-align: center;
+  padding: 2rem 2rem 1rem;
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+.portal-intro-text {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 0.88rem;
+  font-weight: 300;
+  color: var(--text);
+  line-height: 2;
+  letter-spacing: 0.04em;
+}
+
+.portal-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2.5rem;
+  padding: 3rem 3rem 5rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.portal-card {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--white);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.4s ease;
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.portal-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
+}
+
+.portal-card-image {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.portal-card:hover .portal-card-image {
+  transform: scale(1.03);
+}
+
+.portal-card-body {
+  padding: 1.8rem 1.6rem 2rem;
+}
+
+.portal-card-eyebrow {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.65rem;
+  font-weight: 400;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.6rem;
+}
+
+.portal-card-title {
+  font-family: 'Playfair Display', 'Noto Serif JP', serif;
+  font-size: 1.25rem;
+  font-weight: 400;
+  color: var(--charcoal);
+  letter-spacing: 0.08em;
+  margin-bottom: 0.7rem;
+  line-height: 1.5;
+}
+
+.portal-card-desc {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 0.78rem;
+  font-weight: 300;
+  color: var(--text);
+  line-height: 1.9;
+  margin-bottom: 1.2rem;
+}
+
+.portal-card-link {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  color: var(--gold);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.portal-card-link:hover {
+  color: var(--rose);
+}
+
+/* ═══════════════════════════════════════
    RESPONSIVE
    ═══════════════════════════════════════ */
 
-/* Tablet (2 columns) */
+/* Tablet — sidebar collapses */
 @media (max-width: 1000px) {
+  .sidebar {
+    transform: translateX(-100%);
+  }
+
+  .sidebar.is-open {
+    transform: translateX(0);
+  }
+
+  .sidebar-toggle {
+    display: flex;
+  }
+
+  .site-content {
+    margin-left: 0;
+  }
+
   .masonry {
     columns: 2;
     column-gap: 1.4rem;
@@ -910,6 +1213,11 @@ img {
 
   .dress-card {
     margin-bottom: 1.4rem;
+  }
+
+  .portal-grid {
+    padding: 2rem 2rem 4rem;
+    gap: 2rem;
   }
 }
 
@@ -1007,9 +1315,23 @@ img {
     width: 42px;
     height: 42px;
   }
+
+  .portal-grid {
+    grid-template-columns: 1fr;
+    padding: 1.5rem 1rem 3rem;
+    gap: 1.8rem;
+  }
+
+  .portal-card-title {
+    font-size: 1.1rem;
+  }
+
+  .sidebar {
+    width: 280px;
+  }
 }
 
-/* Large desktop (3+ columns tighten up) */
+/* Large desktop (3+ columns) */
 @media (min-width: 1200px) {
   .masonry {
     columns: 3;

@@ -16,1005 +16,119 @@
 
 <body>
 
-    <!-- ═══ Sticky Header ═══ -->
-    <header class="site-header" id="siteHeader">
-        <div class="header-inner">
-            <span class="header-brand">AI Wedding Dress Book</span>
-            <span class="header-sep"></span>
-            <span class="header-tagline">幻想的な花嫁のドレス図鑑</span>
+    <!-- ═══ Sidebar Navigation ═══ -->
+    <button class="sidebar-toggle" id="sidebarToggle" aria-label="メニュー"><span></span><span></span><span></span></button>
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+    <aside class="sidebar" id="sidebar">
+        <a href="index.html" class="sidebar-brand">AI Wedding Dress Book</a>
+        <p class="sidebar-tagline">幻想的な花嫁のドレス図鑑</p>
+        <div class="sidebar-divider"></div>
+        <p class="sidebar-label">Collections</p>
+        <ul class="sidebar-nav">
+            <li><a href="index.html" class="sidebar-link is-active">Home<span
+                        class="sidebar-link-sub">すべてのコレクション</span></a></li>
+            <li><a href="urban-night.html" class="sidebar-link">都市の夜に佇む花嫁<span class="sidebar-link-sub">Vol.
+                        1–3</span></a></li>
+            <li><a href="winter-silence.html" class="sidebar-link">冬の静寂と花嫁<span class="sidebar-link-sub">Vol.
+                        4–5</span></a></li>
+            <li><a href="forest-light.html" class="sidebar-link">森と光の花嫁<span class="sidebar-link-sub">Vol.
+                        6–7</span></a></li>
+            <li><a href="chapel-light.html" class="sidebar-link">聖堂の光と真珠の花嫁<span class="sidebar-link-sub">Vol.
+                        8–11</span></a></li>
+        </ul>
+        <div class="sidebar-footer">
+            <p class="sidebar-footer-text">© 2026 AI Wedding Dress Book</p>
         </div>
-    </header>
+    </aside>
 
-    <!-- ═══ Hero ═══ -->
-    <section class="hero">
-        <p class="hero-eyebrow">Fantastical Bride Collection</p>
-        <h1 class="hero-title">AI Wedding Dress Book</h1>
-        <p class="hero-subtitle">— 幻想的な花嫁のドレス図鑑 —</p>
-        <div class="hero-line"></div>
-    </section>
+    <div class="site-content">
 
-    <!-- ═══════════════════════════════════════════════════════
-         GALLERY — コレクション形式
-
-         ★ 新しいコレクションを追加するには:
-         1. ★ ADD_NEW_COLLECTION_HERE ★ の直前に以下のブロックをコピペ
-         2. コレクション名・コンセプト説明文を書き換え
-         3. 中のカードとJavaScript dressData 配列にもデータを追加
-
-         テンプレート:
-         <section class="collection-section">
-             <div class="collection-header">
-                 <div class="collection-ornament-top"><span class="collection-ornament-diamond">◆</span></div>
-                 <p class="collection-eyebrow">Collection</p>
-                 <h2 class="collection-title">コレクション名</h2>
-                 <p class="collection-desc">コンセプト説明文。1〜2行程度。</p>
-                 <div class="collection-ornament-bottom"><span>✦</span></div>
-             </div>
-             <div class="collection-hero"><img src="photos/hero-xxx.jpg" alt=""></div>
-             <div class="collection-grid">
-                 <div class="masonry">
-                     （ドレスカードをここに並べる）
-                 </div>
-             </div>
-         </section>
-         ═══════════════════════════════════════════════════════ -->
-
-    <main class="gallery-wrapper">
-
-        <!-- ═══════════════════════════════
-             Collection A — 都市の夜に佇む花嫁
-             ═══════════════════════════════ -->
-        <section class="collection-section">
-            <div class="collection-header">
-                <div class="collection-ornament-top"><span class="collection-ornament-diamond">◆</span></div>
-                <p class="collection-eyebrow">Collection</p>
-                <h2 class="collection-title">都市の夜に佇む花嫁</h2>
-                <p class="collection-desc">
-                    煌めくビルの灯りと夜空を背景に、サテンの光沢が映えるナイトシーン。<br>
-                    都市の静寂の中、花嫁だけが光を纏い、物語の主人公として浮かび上がります。
-                </p>
-                <div class="collection-ornament-bottom"><span>✦</span></div>
+        <!-- ═══ Sticky Header ═══ -->
+        <header class="site-header" id="siteHeader">
+            <div class="header-inner">
+                <span class="header-brand">AI Wedding Dress Book</span>
+                <span class="header-sep"></span>
+                <span class="header-tagline">幻想的な花嫁のドレス図鑑</span>
             </div>
-            <!-- HERO_BANNER: <div class="collection-hero"><img src="photos/hero-night-city.jpg" alt="都市の夜に佇む花嫁"></div> -->
-            <div class="collection-grid">
-                <div class="masonry">
+        </header>
 
-                    <!-- ── Vol. 1 ── -->
-                    <article class="dress-card" data-index="1">
-                        <div class="card-image-wrap">
-                            <img src="photos/dress-001.jpg" alt="Vol.1 — 夜景に浮かぶサテンドレスの花嫁" loading="lazy">
-                            <div class="card-overlay">
-                                <span class="overlay-icon">✦</span>
-                                <span class="overlay-text">Details</span>
-                            </div>
-                        </div>
-                        <div class="card-info">
-                            <span class="card-vol">Vol. 1</span>
-                            <h2 class="card-title">夜景に浮かぶサテンドレスの花嫁</h2>
-                            <p class="card-date">2026.02.15</p>
-                        </div>
-                    </article>
-
-                    <!-- ── Vol. 2 ── -->
-                    <article class="dress-card" data-index="2">
-                        <div class="card-image-wrap">
-                            <img src="photos/dress-002.jpg" alt="Vol.2 — 都市の光に溶けるシルエット" loading="lazy">
-                            <div class="card-overlay">
-                                <span class="overlay-icon">✦</span>
-                                <span class="overlay-text">Details</span>
-                            </div>
-                        </div>
-                        <div class="card-info">
-                            <span class="card-vol">Vol. 2</span>
-                            <h2 class="card-title">都市の光に溶けるシルエット</h2>
-                            <p class="card-date">2026.02.16</p>
-                        </div>
-                    </article>
-
-                    <!-- ── Vol. 3 ── -->
-                    <article class="dress-card" data-index="3">
-                        <div class="card-image-wrap">
-                            <img src="photos/dress-003.jpg" alt="Vol.3 — ダイヤモンドを纏う横顔" loading="lazy">
-                            <div class="card-overlay">
-                                <span class="overlay-icon">✦</span>
-                                <span class="overlay-text">Details</span>
-                            </div>
-                        </div>
-                        <div class="card-info">
-                            <span class="card-vol">Vol. 3</span>
-                            <h2 class="card-title">ダイヤモンドを纏う横顔</h2>
-                            <p class="card-date">2026.02.17</p>
-                        </div>
-                    </article>
-
-                    <!-- ★ ADD_NEW_CARD_TO_NIGHT_CITY ★ -->
-                </div>
-            </div>
+        <!-- ═══ Hero ═══ -->
+        <section class="hero">
+            <p class="hero-eyebrow">Fantastical Bride Collection</p>
+            <h1 class="hero-title">AI Wedding Dress Book</h1>
+            <p class="hero-subtitle">— 幻想的な花嫁のドレス図鑑 —</p>
+            <div class="hero-line"></div>
         </section>
 
-        <!-- ═══════════════════════════════
-             Collection B — 冬の静寂と花嫁
-             ═══════════════════════════════ -->
-        <section class="collection-section">
-            <div class="collection-header">
-                <div class="collection-ornament-top"><span class="collection-ornament-diamond">◆</span></div>
-                <p class="collection-eyebrow">Collection</p>
-                <h2 class="collection-title">冬の静寂と花嫁</h2>
-                <p class="collection-desc">
-                    雪に覆われた大地と淡い光の中で、純白のドレスが息を呑む美しさで浮かび上がる。<br>
-                    冬だけが持つ静けさと透明感が、花嫁の存在を一層神聖なものにします。
+        <!-- ═══ Portal — Collection Showcase ═══ -->
+        <main>
+            <div class="portal-intro">
+                <p class="portal-intro-text">
+                    AIが描き出す、夢のようなウェディングドレスの世界。<br>
+                    四つのコレクションから、お気に入りのシーンをお探しください。
                 </p>
-                <div class="collection-ornament-bottom"><span>✦</span></div>
             </div>
-            <!-- HERO_BANNER: <div class="collection-hero"><img src="photos/hero-winter.jpg" alt="冬の静寂と花嫁"></div> -->
-            <div class="collection-grid">
-                <div class="masonry">
 
-                    <!-- ── Vol. 4 ── -->
-                    <article class="dress-card" data-index="4">
-                        <div class="card-image-wrap">
-                            <img src="photos/dress-004.jpg" alt="Vol.4 — 雪原に咲く淡紅の花嫁" loading="lazy">
-                            <div class="card-overlay">
-                                <span class="overlay-icon">✦</span>
-                                <span class="overlay-text">Details</span>
-                            </div>
-                        </div>
-                        <div class="card-info">
-                            <span class="card-vol">Vol. 4</span>
-                            <h2 class="card-title">雪原に咲く淡紅の花嫁</h2>
-                            <p class="card-date">2026.02.18</p>
-                        </div>
-                    </article>
+            <div class="portal-grid">
 
-                    <!-- ── Vol. 5 ── -->
-                    <article class="dress-card" data-index="5">
-                        <div class="card-image-wrap">
-                            <img src="photos/dress-005.jpg" alt="Vol.5 — 白銀の大地を歩む花嫁" loading="lazy">
-                            <div class="card-overlay">
-                                <span class="overlay-icon">✦</span>
-                                <span class="overlay-text">Details</span>
-                            </div>
-                        </div>
-                        <div class="card-info">
-                            <span class="card-vol">Vol. 5</span>
-                            <h2 class="card-title">白銀の大地を歩む花嫁</h2>
-                            <p class="card-date">2026.02.19</p>
-                        </div>
-                    </article>
+                <!-- Collection A -->
+                <a href="urban-night.html" class="portal-card">
+                    <img src="photos/dress-001.jpg" alt="都市の夜に佇む花嫁" class="portal-card-image">
+                    <div class="portal-card-body">
+                        <p class="portal-card-eyebrow">Collection A</p>
+                        <h2 class="portal-card-title">都市の夜に佇む花嫁</h2>
+                        <p class="portal-card-desc">煌めくビルの灯りと夜空を背景に、サテンの光沢が映えるナイトシーン。</p>
+                        <span class="portal-card-link">View Collection →</span>
+                    </div>
+                </a>
 
-                    <!-- ★ ADD_NEW_CARD_TO_WINTER ★ -->
-                </div>
+                <!-- Collection B -->
+                <a href="winter-silence.html" class="portal-card">
+                    <img src="photos/dress-004.jpg" alt="冬の静寂と花嫁" class="portal-card-image">
+                    <div class="portal-card-body">
+                        <p class="portal-card-eyebrow">Collection B</p>
+                        <h2 class="portal-card-title">冬の静寂と花嫁</h2>
+                        <p class="portal-card-desc">雪に覆われた大地と淡い光の中で、純白のドレスが息を呑む美しさで浮かび上がる。</p>
+                        <span class="portal-card-link">View Collection →</span>
+                    </div>
+                </a>
+
+                <!-- Collection C -->
+                <a href="forest-light.html" class="portal-card">
+                    <img src="photos/dress-006.jpg" alt="森と光の花嫁" class="portal-card-image">
+                    <div class="portal-card-body">
+                        <p class="portal-card-eyebrow">Collection C</p>
+                        <h2 class="portal-card-title">森と光の花嫁</h2>
+                        <p class="portal-card-desc">朝靄に包まれた森の中、木漏れ日が花嫁を祝福するように降り注ぐ。</p>
+                        <span class="portal-card-link">View Collection →</span>
+                    </div>
+                </a>
+
+                <!-- Collection D -->
+                <a href="chapel-light.html" class="portal-card">
+                    <img src="photos/dress-008.jpg" alt="聖堂の光と真珠の花嫁" class="portal-card-image">
+                    <div class="portal-card-body">
+                        <p class="portal-card-eyebrow">Collection D</p>
+                        <h2 class="portal-card-title">聖堂の光と真珠の花嫁</h2>
+                        <p class="portal-card-desc">ゴシック建築の聖堂に差し込むステンドグラスの光が、花嫁を七色に染め上げる。</p>
+                        <span class="portal-card-link">View Collection →</span>
+                    </div>
+                </a>
+
             </div>
-        </section>
+        </main>
 
-        <!-- ═══════════════════════════════
-             Collection C — 森と光の花嫁
-             ═══════════════════════════════ -->
-        <section class="collection-section">
-            <div class="collection-header">
-                <div class="collection-ornament-top"><span class="collection-ornament-diamond">◆</span></div>
-                <p class="collection-eyebrow">Collection</p>
-                <h2 class="collection-title">森と光の花嫁</h2>
-                <p class="collection-desc">
-                    朝靄に包まれた森の中、木漏れ日が花嫁を祝福するように降り注ぐ。<br>
-                    花冠とナチュラルブーケが、自然と一体になる幻想的なシーンを紡ぎます。
-                </p>
-                <div class="collection-ornament-bottom"><span>✦</span></div>
-            </div>
-            <!-- HERO_BANNER: <div class="collection-hero"><img src="photos/hero-forest.jpg" alt="森と光の花嫁"></div> -->
-            <div class="collection-grid">
-                <div class="masonry">
+        <!-- ═══ Footer ═══ -->
+        <footer class="site-footer">
+            <div class="footer-ornament">— ✦ —</div>
+            <p class="footer-text">すべての画像はAIによって生成されたものです。実在するドレスデザインではありません。</p>
+            <p class="footer-brand">AI Wedding Dress Book</p>
+            <p class="footer-copy">&copy; 2026</p>
+        </footer>
 
-                    <!-- ── Vol. 6 ── -->
-                    <article class="dress-card" data-index="6">
-                        <div class="card-image-wrap">
-                            <img src="photos/dress-006.jpg" alt="Vol.6 — 霧の森に佇む花冠の花嫁" loading="lazy">
-                            <div class="card-overlay">
-                                <span class="overlay-icon">✦</span>
-                                <span class="overlay-text">Details</span>
-                            </div>
-                        </div>
-                        <div class="card-info">
-                            <span class="card-vol">Vol. 6</span>
-                            <h2 class="card-title">霧の森に佇む花冠の花嫁</h2>
-                            <p class="card-date">2026.02.20</p>
-                        </div>
-                    </article>
+    </div><!-- /.site-content -->
 
-                    <!-- ── Vol. 7 ── -->
-                    <article class="dress-card" data-index="7">
-                        <div class="card-image-wrap">
-                            <img src="photos/dress-007.jpg" alt="Vol.7 — 木漏れ日と花束の横顔" loading="lazy">
-                            <div class="card-overlay">
-                                <span class="overlay-icon">✦</span>
-                                <span class="overlay-text">Details</span>
-                            </div>
-                        </div>
-                        <div class="card-info">
-                            <span class="card-vol">Vol. 7</span>
-                            <h2 class="card-title">木漏れ日と花束の横顔</h2>
-                            <p class="card-date">2026.02.21</p>
-                        </div>
-                    </article>
-
-                    <!-- ★ ADD_NEW_CARD_TO_FOREST ★ -->
-                </div>
-            </div>
-        </section>
-
-        <!-- ═══════════════════════════════
-             Collection D — 聖堂の光と真珠の花嫁
-             ═══════════════════════════════ -->
-        <section class="collection-section">
-            <div class="collection-header">
-                <div class="collection-ornament-top"><span class="collection-ornament-diamond">◆</span></div>
-                <p class="collection-eyebrow">Collection</p>
-                <h2 class="collection-title">聖堂の光と真珠の花嫁</h2>
-                <p class="collection-desc">
-                    ゴシック建築の聖堂に差し込むステンドグラスの光が、花嫁を七色に染め上げる。<br>
-                    ティアラと真珠の気品、白薔薇のブーケ。永遠を誓う聖なる空間に佇む花嫁の物語。
-                </p>
-                <div class="collection-ornament-bottom"><span>✦</span></div>
-            </div>
-            <!-- HERO_BANNER: <div class="collection-hero"><img src="photos/hero-chapel.jpg" alt="聖堂の光と真珠の花嫁"></div> -->
-            <div class="collection-grid">
-                <div class="masonry">
-
-                    <!-- ── Vol. 8 ── -->
-                    <article class="dress-card" data-index="8">
-                        <div class="card-image-wrap">
-                            <img src="photos/dress-008.jpg" alt="Vol.8 — 祈りを捧げる真珠の花嫁" loading="lazy">
-                            <div class="card-overlay">
-                                <span class="overlay-icon">✦</span>
-                                <span class="overlay-text">Details</span>
-                            </div>
-                        </div>
-                        <div class="card-info">
-                            <span class="card-vol">Vol. 8</span>
-                            <h2 class="card-title">祈りを捧げる真珠の花嫁</h2>
-                            <p class="card-date">2026.02.22</p>
-                        </div>
-                    </article>
-
-                    <!-- ── Vol. 9 ── -->
-                    <article class="dress-card" data-index="9">
-                        <div class="card-image-wrap">
-                            <img src="photos/dress-009.jpg" alt="Vol.9 — 聖堂のバージンロードに立つ花嫁" loading="lazy">
-                            <div class="card-overlay">
-                                <span class="overlay-icon">✦</span>
-                                <span class="overlay-text">Details</span>
-                            </div>
-                        </div>
-                        <div class="card-info">
-                            <span class="card-vol">Vol. 9</span>
-                            <h2 class="card-title">聖堂のバージンロードに立つ花嫁</h2>
-                            <p class="card-date">2026.02.23</p>
-                        </div>
-                    </article>
-
-                    <!-- ── Vol. 10 ── -->
-                    <article class="dress-card" data-index="10">
-                        <div class="card-image-wrap">
-                            <img src="photos/dress-010.jpg" alt="Vol.10 — ステンドグラスの前で微睡む花嫁" loading="lazy">
-                            <div class="card-overlay">
-                                <span class="overlay-icon">✦</span>
-                                <span class="overlay-text">Details</span>
-                            </div>
-                        </div>
-                        <div class="card-info">
-                            <span class="card-vol">Vol. 10</span>
-                            <h2 class="card-title">ステンドグラスの前で微睡む花嫁</h2>
-                            <p class="card-date">2026.02.24</p>
-                        </div>
-                    </article>
-
-                    <!-- ── Vol. 11 ── -->
-                    <article class="dress-card" data-index="11">
-                        <div class="card-image-wrap">
-                            <img src="photos/dress-011.jpg" alt="Vol.11 — 白薔薇を抱く横顔" loading="lazy">
-                            <div class="card-overlay">
-                                <span class="overlay-icon">✦</span>
-                                <span class="overlay-text">Details</span>
-                            </div>
-                        </div>
-                        <div class="card-info">
-                            <span class="card-vol">Vol. 11</span>
-                            <h2 class="card-title">白薔薇を抱く横顔</h2>
-                            <p class="card-date">2026.02.25</p>
-                        </div>
-                    </article>
-
-                    <!-- ★ ADD_NEW_CARD_TO_CHAPEL ★ -->
-                </div>
-            </div>
-        </section>
-
-        <!-- ★ ADD_NEW_COLLECTION_HERE ★ -->
-
-    </main>
-
-    <!-- ═══ Detail Modal ═══ -->
-    <div class="modal-backdrop" id="modal" aria-hidden="true" role="dialog">
-        <div class="modal-card">
-            <button class="modal-close" id="modalClose" aria-label="閉じる">&times;</button>
-            <div class="modal-image-wrap">
-                <img class="modal-image" id="modalImage" src="" alt="">
-            </div>
-            <div class="modal-body">
-                <span class="modal-vol" id="modalVol"></span>
-                <h2 class="modal-title" id="modalTitle"></h2>
-                <p class="modal-date" id="modalDate"></p>
-                <div class="modal-divider"></div>
-
-                <div class="modal-section">
-                    <h3 class="modal-section-title">
-                        <span class="section-icon">◇</span> デザインのポイント
-                    </h3>
-                    <div class="modal-points" id="modalPoints"></div>
-                </div>
-
-                <div class="modal-section">
-                    <h3 class="modal-section-title">
-                        <span class="section-icon">◇</span> インスピレーション
-                    </h3>
-                    <p class="modal-inspiration" id="modalInspiration"></p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- ═══ Lightbox (full-screen viewer with Pan & Zoom) ═══ -->
-    <div class="lightbox" id="lightbox" aria-hidden="true">
-        <button class="lightbox-close" id="lbClose" aria-label="閉じる">&times;</button>
-        <button class="lightbox-prev" id="lbPrev" aria-label="前の画像">&#8249;</button>
-        <button class="lightbox-next" id="lbNext" aria-label="次の画像">&#8250;</button>
-        <div class="lightbox-panzoom" id="lbPanzoom">
-            <img class="lightbox-img" id="lbImage" src="" alt="">
-        </div>
-        <div class="lightbox-caption">
-            <span class="lightbox-vol" id="lbVol"></span>
-            <span class="lightbox-title" id="lbTitle"></span>
-        </div>
-    </div>
-
-    <!-- ═══ Footer ═══ -->
-    <footer class="site-footer">
-        <div class="footer-ornament">— ✦ —</div>
-        <p class="footer-text">すべての画像はAIによって生成されたものです。実在するドレスデザインではありません。</p>
-        <p class="footer-brand">AI Wedding Dress Book</p>
-        <p class="footer-copy">&copy; 2026</p>
-    </footer>
-
-    <script>
-        // ══════════════════════════════════════════════════
-        // ドレスデータ（全コレクション統合）
-        //
-        // ★ 新しいドレスを追加する場合:
-        //   1. この配列の適切な位置にオブジェクトを追加
-        //   2. HTML側の対応するコレクション内にもカードを追加
-        //   3. data-index はこの配列内の位置（1始まり）と一致させる
-        // ══════════════════════════════════════════════════
-        const dressData = [
-            // ── Collection A: 都市の夜に佇む花嫁 ──
-            {
-                vol: "Vol. 1",
-                title: "夜景に浮かぶサテンドレスの花嫁",
-                date: "2026.02.15",
-                image: "photos/dress-001.jpg",
-                points: [
-                    {
-                        tag: "Silhouette",
-                        title: "ロングトレーンが描く優美なAライン",
-                        body: "ストラップレスのボディスから裾へと大きく広がるAラインシルエット。バックに流れるロングトレーンが、夜のルーフトップに白い絹の軌跡を描きます。振り返るその一瞬、ドレスの全容が都市の夜景とともに劇的に浮かび上がります。"
-                    },
-                    {
-                        tag: "Detail",
-                        title: "背中のくるみボタンと構築的なボーン",
-                        body: "背中の中心を走るくるみボタンの一列が、クラシカルなクチュールの気品を演出。内部に仕込まれた精密なボーンワークが、ストラップレスでありながらボディを美しく支え、凛としたシルエットを実現しています。"
-                    },
-                    {
-                        tag: "Material",
-                        title: "ダッチェスサテンの重厚な光沢",
-                        body: "厚手のダッチェスサテンが、夜景の光を受けて滑らかに輝きます。シルクの持つ重みが生み出す自然なドレープと、光を反射する凛とした艶。モダンな潔さと素材の贅沢さが共存する一着です。"
-                    }
-                ],
-                inspiration: "ルイス・カーンの建築哲学「光と影の対話」。夜の都市に佇む花嫁を、建築物のように構造的かつ美しく際立たせる。光が当たる白いサテンと、背後に広がる夜景のコントラストが、この一枚の核心です。"
-            },
-            {
-                vol: "Vol. 2",
-                title: "都市の光に溶けるシルエット",
-                date: "2026.02.16",
-                image: "photos/dress-002.jpg",
-                points: [
-                    {
-                        tag: "Silhouette",
-                        title: "逆光が生む神秘的なプロフィール",
-                        body: "都市の灯りを背に受けて浮かび上がる横顔のシルエット。ドレスのストラップレスラインと、緩やかにウェーブする髪の輪郭が、光の縁取り（リムライト）によって幻想的に際立ちます。"
-                    },
-                    {
-                        tag: "Detail",
-                        title: "光を纏う髪とイヤリングの煌めき",
-                        body: "バックライトによって黄金色に縁取られる髪の毛先と、かすかに光るドロップイヤリング。暗闘の中にあってなお、ディテールの輝きがこの花嫁の存在感を雄弁に語ります。"
-                    },
-                    {
-                        tag: "Material",
-                        title: "都市の夜景が織りなすボケのテクスチャ",
-                        body: "背景に溶ける無数のビル灯が、まるでボケ玉の宝石のように幻想的な空間を作り上げます。写真そのものが「素材」となり、ドレスとその持ち主を唯一無二のアート作品に昇華させています。"
-                    }
-                ],
-                inspiration: "エドワード・ホッパーの「夜ふかしの人々（Nighthawks）」に描かれた都会の孤独と美しさ。夜の静寂の中、花嫁は物語の主人公として都市の光に溶けていきます。"
-            },
-            {
-                vol: "Vol. 3",
-                title: "ダイヤモンドを纏う横顔",
-                date: "2026.02.17",
-                image: "photos/dress-003.jpg",
-                points: [
-                    {
-                        tag: "Silhouette",
-                        title: "振り返りのポーズが生む優美なライン",
-                        body: "肩越しにこちらを見つめるポーズが、デコルテから背中にかけての美しいラインを際立たせます。ストラップレスのネックラインが、肌とジュエリーの輝きを最大限に引き出しています。"
-                    },
-                    {
-                        tag: "Detail",
-                        title: "ティアドロップダイヤのイヤリング",
-                        body: "揺れるたびに光を捕らえるティアドロップ型のダイヤモンドイヤリング。夜景の光を受けて幾筋もの輝きを放ち、花嫁の表情に華やかさとドラマチックなアクセントを添えます。"
-                    },
-                    {
-                        tag: "Material",
-                        title: "テニスネックレスの煌めくライン",
-                        body: "首元を飾るダイヤモンドのテニスネックレスが、デコルテに沿って繊細な光の帯を描きます。サテンドレスのミニマルな美しさと、ジュエリーの華やかさが絶妙なバランスを保ちます。"
-                    }
-                ],
-                inspiration: "フェルメールの「真珠の耳飾りの少女」に通じる、振り返りの一瞬の美しさ。光と宝石と肌が交わるその瞬間を、現代の夜の都市を背景に再解釈しました。"
-            },
-
-            // ── Collection B: 冬の静寂と花嫁 ──
-            {
-                vol: "Vol. 4",
-                title: "雪原に咲く淡紅の花嫁",
-                date: "2026.02.18",
-                image: "photos/dress-004.jpg",
-                points: [
-                    {
-                        tag: "Silhouette",
-                        title: "ふわりと広がるプリンセスライン",
-                        body: "ウエストから大きく広がるプリンセスラインのスカートが、雪原の中で桜の花びらのように咲き誇ります。ストラップレスのネックラインが肩のラインを美しく見せ、凛とした冬の空気の中にたおやかな色気を添えています。"
-                    },
-                    {
-                        tag: "Detail",
-                        title: "振り返りの一瞬に宿る儚さ",
-                        body: "肩越しにこちらを見つめるポーズが、無垢な表情と雪景色の静けさを最大限に引き出します。おくれ毛が風にそよぐナチュラルなアップヘアが、作り込みすぎない自然体の美しさを演出しています。"
-                    },
-                    {
-                        tag: "Material",
-                        title: "淡紅色サテンの柔らかな光沢",
-                        body: "純白ではなく、ほんのりと頬紅めいた淡紅色（ブラッシュピンク）のサテンを選んだことで、雪の白さとのグラデーションが生まれます。冬の淡い光を受けて温かみのある光沢を放つ一着です。"
-                    }
-                ],
-                inspiration: "花見の季節にまだ雪が残る北国の早春。寒さの中に咲く一輪の梅花のように、厳しい自然の中にこそ際立つ柔らかな色彩と、儚くも強い美しさを表現しました。"
-            },
-            {
-                vol: "Vol. 5",
-                title: "白銀の大地を歩む花嫁",
-                date: "2026.02.19",
-                image: "photos/dress-005.jpg",
-                points: [
-                    {
-                        tag: "Silhouette",
-                        title: "雪に広がる壮大なトレーン",
-                        body: "俯瞰から捉えたバックビューが、ドレスのスケール感を最大限に引き出します。雪原に扇状に広がるトレーンは、まるで白い大地に描かれた翼のよう。足跡だけが花嫁の歩みの軌跡を物語ります。"
-                    },
-                    {
-                        tag: "Detail",
-                        title: "花飾りのシニヨンヘア",
-                        body: "うなじに小さな白い花をあしらったクラシカルなシニヨンが、後ろ姿の主役に。ミニマルなドレスラインと相まって、装飾を削ぎ落とした中にこそ宿る品格と純粋さを体現しています。"
-                    },
-                    {
-                        tag: "Material",
-                        title: "シャンパンゴールドの微光サテン",
-                        body: "雪景色の中で微かにシャンパンゴールドに輝くサテン素材。純白の雪と溶け合いながらも、陽光を受けて温かな金色のニュアンスを帯びます。構造的なボックスプリーツが素材の張りと美しいフォルムを生み出しています。"
-                    }
-                ],
-                inspiration: "カスパー・ダーヴィト・フリードリヒの「雲海の上の旅人」。広大な自然の前に一人佇む人間の崇高さ。白銀の世界を歩む花嫁は、未知なる人生への一歩を踏み出す旅人そのものです。"
-            },
-
-            // ── Collection C: 森と光の花嫁 ──
-            {
-                vol: "Vol. 6",
-                title: "霧の森に佇む花冠の花嫁",
-                date: "2026.02.20",
-                image: "photos/dress-006.jpg",
-                points: [
-                    {
-                        tag: "Silhouette",
-                        title: "Vネックが描くギリシャ的な優美",
-                        body: "深いVネックラインからウエストを通り、足元まで流れる柔らかなAラインが、古代ギリシャの女神像を思わせます。霧に包まれた森の中で、ドレスの裾が地面に自然と広がり、大地と花嫁が一体になるようなシルエットを生みます。"
-                    },
-                    {
-                        tag: "Detail",
-                        title: "野の花を編み込んだフラワークラウン",
-                        body: "白い小花とグリーンの蔓を編み込んだナチュラルなフラワークラウンが、森の妖精のような雰囲気を纏わせます。ゆるく波打つ髪と相まって、自然の一部として溶け込む美しさを実現しています。"
-                    },
-                    {
-                        tag: "Material",
-                        title: "アイボリーシフォンの透明感",
-                        body: "軽やかなシフォン素材がわずかな風にもなびき、森の中の空気を纏うような透明感を生みます。ホワイトとグリーンで束ねたナチュラルブーケが、ドレスのアイボリーと森の緑を美しく繋いでいます。"
-                    }
-                ],
-                inspiration: "シェイクスピアの「夏の夜の夢」に登場する森の妖精ティターニア。霧に包まれた森は現実と幻想の境界。そこに佇む花嫁は、花と緑と光で祝福された物語のヒロインです。"
-            },
-            {
-                vol: "Vol. 7",
-                title: "木漏れ日と花束の横顔",
-                date: "2026.02.21",
-                image: "photos/dress-007.jpg",
-                points: [
-                    {
-                        tag: "Silhouette",
-                        title: "光に向かう横顔のプロフィール",
-                        body: "森の奥から差し込む木漏れ日に向かって微笑む横顔。Vネックドレスの肩のラインと、フィッシュテールに編まれた髪の流れが、光の方向に向かう凛とした美しさを際立たせます。"
-                    },
-                    {
-                        tag: "Detail",
-                        title: "フィッシュテールブレイドと花冠",
-                        body: "丁寧に編み込まれたフィッシュテールブレイドに、小花と葉を織り交ぜたフラワークラウンを合わせたヘアスタイル。繊細な手仕事の美しさが、ナチュラルなドレスの世界観と完璧に調和します。"
-                    },
-                    {
-                        tag: "Material",
-                        title: "ホワイトブーケの清らかな質感",
-                        body: "白いラナンキュラスとグリーンのユーカリを束ねたナチュラルブーケ。花嫁が胸元に抱えるその姿は、まるで森から贈られた祝福の花束。ドレスのアイボリーと花の白が、木漏れ日の中で柔らかく溶け合います。"
-                    }
-                ],
-                inspiration: "ジョン・ウィリアム・ウォーターハウスが描く「花を摘む乙女」の世界。朝靄の森の中、光と植物に祝福される花嫁は、自然そのものが紡ぐ美のカンバスに立っています。"
-            },
-            // ── Collection D: 聖堂の光と真珠の花嫁 ──
-            {
-                vol: "Vol. 8",
-                title: "祈りを捧げる真珠の花嫁",
-                date: "2026.02.22",
-                image: "photos/dress-008.jpg",
-                points: [
-                    {
-                        tag: "Silhouette",
-                        title: "ベールとティアラが描く清楚なライン",
-                        body: "透き通るチュールのベールが頭上のティアラから肩へと優雅に流れ落ち、聖堂の柔らかな光を纏います。目を伏せた穏やかな表情と相まって、ルネサンス絵画の聖母を彷彿とさせる気品あるシルエットが完成しています。"
-                    },
-                    {
-                        tag: "Detail",
-                        title: "あこや真珠のネックレスとイヤリング",
-                        body: "首元を飾るあこや真珠の一連ネックレスと、揺れるパールドロップのイヤリング。サテンドレスのミニマルなデザインに、真珠だけが添える上品な光。日本の花嫁の美意識が凝縮されたジュエリーコーディネートです。"
-                    },
-                    {
-                        tag: "Material",
-                        title: "白薔薇とカスミソウのクラシカルブーケ",
-                        body: "白薔薇とカスミソウだけで構成されたラウンドブーケが、クラシカルな気品を体現します。花嫁の胸元で柔らかくぼかされたブーケの白さが、サテンドレスの白と重なり合い、統一感のある美しさを生み出しています。"
-                    }
-                ],
-                inspiration: "フラ・アンジェリコの「受胎告知」に描かれた聖母マリア。目を伏せ、静かに祈る姿は、聖堂という空間が持つ神聖な力によって、花嫁を一人の女性から物語の象徴へと昇華させます。"
-            },
-            {
-                vol: "Vol. 9",
-                title: "聖堂のバージンロードに立つ花嫁",
-                date: "2026.02.23",
-                image: "photos/dress-009.jpg",
-                points: [
-                    {
-                        tag: "Silhouette",
-                        title: "Aラインが描く完璧なプロポーション",
-                        body: "スウィートハートネックラインからウエストを絞り、足元へと大きく広がるクラシカルなAラインドレス。ゴシック建築のアーチと対称的に配された花嫁の立ち姿が、聖堂全体を一つの舞台作品のように完成させています。"
-                    },
-                    {
-                        tag: "Detail",
-                        title: "ステンドグラスが彩る七色のヴェール",
-                        body: "背後のステンドグラスから降り注ぐ色光が、花嫁のベールとドレスに虹のような彩りを添えます。人工的な照明では決して再現できない、聖堂だけが持つ神秘的なライティングが、この一枚を特別なものにしています。"
-                    },
-                    {
-                        tag: "Material",
-                        title: "ミカドシルクの構築的な光沢",
-                        body: "ハリのあるミカドシルクが、ドレスの構造的な美しさを際立たせます。素材自体が持つ張りがボックスプリーツを美しく保ち、聖堂の大空間に負けないスケール感と存在感を生み出しています。"
-                    }
-                ],
-                inspiration: "ジャン＝レオン・ジェロームの歴史画に描かれる聖堂内部の荘厳さ。バージンロードの中央に凛と立つ花嫁は、建築・光・衣装のすべてが一体となった、生きた芸術作品そのものです。"
-            },
-            {
-                vol: "Vol. 10",
-                title: "ステンドグラスの前で微睡む花嫁",
-                date: "2026.02.24",
-                image: "photos/dress-010.jpg",
-                points: [
-                    {
-                        tag: "Silhouette",
-                        title: "座り姿が描く優雅なドレープ",
-                        body: "教会の木製ベンチに腰掛けた花嫁の姿が、ドレスのスカートに美しいドレープを生み出します。立ち姿では見えない、サテンの柔らかな流れと光沢の変化が、座り姿ならではの優美さを引き出しています。"
-                    },
-                    {
-                        tag: "Detail",
-                        title: "重ねた手と伏せた瞳の祈りの所作",
-                        body: "膝の上でそっと重ねられた両手と、静かに伏せられた瞳。花嫁の内面の美しさが、この何気ない所作の中に凝縮されています。横に置かれたブーケが、物語のワンシーンのように空間を彩ります。"
-                    },
-                    {
-                        tag: "Material",
-                        title: "木と石と光が織りなすテクスチャの対比",
-                        body: "木目のベンチ、石造りの柱、色光のステンドグラス、そして白いサテン。異なるテクスチャが一つのフレームに共存することで、花嫁のドレスの純粋な白さが一層引き立てられています。"
-                    }
-                ],
-                inspiration: "ヨハネス・フェルメールの室内画。窓から差し込む光の中で、静かに佇む女性の美。教会のステンドグラスを通して降り注ぐ光は、300年前のオランダの画家が追い求めた光そのものです。"
-            },
-            {
-                vol: "Vol. 11",
-                title: "白薔薇を抱く横顔",
-                date: "2026.02.25",
-                image: "photos/dress-011.jpg",
-                points: [
-                    {
-                        tag: "Silhouette",
-                        title: "斜め横顔が際立たせるデコルテライン",
-                        body: "斜め横からの構図が、スウィートハートネックラインのカーブと鎖骨のラインを美しく際立たせます。ベールが背中に流れ、ティアラからシニヨンへのラインが一つの流れを描く、計算された横顔の美学です。"
-                    },
-                    {
-                        tag: "Detail",
-                        title: "微笑みとパールの調和",
-                        body: "ほんのりと微笑む横顔に、パールネックレスとイヤリングの柔らかな光沢が寄り添います。正面でもなく真横でもない絶妙な角度が、花嫁の自然な美しさと、ジュエリーの気品を同時に捉えています。"
-                    },
-                    {
-                        tag: "Material",
-                        title: "ボリュームブーケの存在感",
-                        body: "胸元に抱えた白薔薇とカスミソウのボリュームブーケが、ドレスのミニマルなデザインに華やかなアクセントを加えます。花の白とドレスの白が微妙に異なるトーンで重なり合い、奥行きのある白の世界を構築しています。"
-                    }
-                ],
-                inspiration: "ジョン・シンガー・サージェントの肖像画に見る、光と影の中の高貴な女性像。聖堂の柔らかな光に包まれた横顔は、時を超えて語り継がれる肖像画のような永遠の美しさを宿しています。"
-            }
-            // ★ ADD_NEW_DRESS_DATA_HERE ★
-        ];
-
-        // ══════════════════════════════════════
-        // Sticky Header
-        // ══════════════════════════════════════
-        const header = document.getElementById('siteHeader');
-        window.addEventListener('scroll', () => {
-            header.classList.toggle('is-scrolled', window.scrollY > 60);
-        }, { passive: true });
-
-        // ══════════════════════════════════════
-        // IntersectionObserver — Fade-in cards
-        // (applies to ALL .dress-card across all collections)
-        // ══════════════════════════════════════
-        const allCards = document.querySelectorAll('.dress-card');
-        const fadeObserver = new IntersectionObserver((entries) => {
-            entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('is-visible');
-                    fadeObserver.unobserve(entry.target);
-                }
-            });
-        }, {
-            threshold: 0.08,
-            rootMargin: '0px 0px -40px 0px'
-        });
-
-        allCards.forEach((card, i) => {
-            card.style.transitionDelay = `${(i % 4) * 0.08}s`;
-            fadeObserver.observe(card);
-        });
-
-        // ══════════════════════════════════════
-        // Build global index map: data-index → dressData index
-        // ══════════════════════════════════════
-        function getDataIndex(card) {
-            return parseInt(card.dataset.index, 10) - 1;
-        }
-
-        // ══════════════════════════════════════
-        // Detail Modal
-        // ══════════════════════════════════════
-        const modal = document.getElementById('modal');
-        const modalImage = document.getElementById('modalImage');
-        const modalVol = document.getElementById('modalVol');
-        const modalTitle = document.getElementById('modalTitle');
-        const modalDate = document.getElementById('modalDate');
-        const modalPoints = document.getElementById('modalPoints');
-        const modalInspo = document.getElementById('modalInspiration');
-        const modalClose = document.getElementById('modalClose');
-
-        function openModal(index) {
-            const d = dressData[index];
-            if (!d) return;
-            modalImage.src = d.image;
-            modalImage.alt = d.title;
-            modalVol.textContent = d.vol;
-            modalTitle.textContent = d.title;
-            modalDate.textContent = d.date;
-            modalPoints.innerHTML = d.points.map(p => `
-                <div class="point-card">
-                    <span class="point-tag">${p.tag}</span>
-                    <h4 class="point-title">${p.title}</h4>
-                    <p class="point-body">${p.body}</p>
-                </div>
-            `).join('');
-            modalInspo.textContent = d.inspiration;
-            modal.classList.add('is-active');
-            modal.setAttribute('aria-hidden', 'false');
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeModal() {
-            modal.classList.remove('is-active');
-            modal.setAttribute('aria-hidden', 'true');
-            document.body.style.overflow = '';
-        }
-
-        allCards.forEach(card => {
-            card.addEventListener('click', () => {
-                openModal(getDataIndex(card));
-            });
-        });
-
-        modalClose.addEventListener('click', closeModal);
-        modal.addEventListener('click', (e) => {
-            if (e.target === modal) closeModal();
-        });
-
-        // ══════════════════════════════════════
-        // Lightbox (full-screen, crosses all collections)
-        // with Amazon-style Pan & Zoom
-        // ══════════════════════════════════════
-        const lightbox = document.getElementById('lightbox');
-        const lbImage = document.getElementById('lbImage');
-        const lbPanzoomEl = document.getElementById('lbPanzoom');
-        const lbVol = document.getElementById('lbVol');
-        const lbTitle = document.getElementById('lbTitle');
-        const lbClose = document.getElementById('lbClose');
-        const lbPrev = document.getElementById('lbPrev');
-        const lbNext = document.getElementById('lbNext');
-        let currentLbIndex = 0;
-
-        // ── Panzoom State ──
-        let pzScale = 1;
-        let pzX = 0;
-        let pzY = 0;
-        let pzDragging = false;
-        let pzStartX = 0;
-        let pzStartY = 0;
-        let pzStartPanX = 0;
-        let pzStartPanY = 0;
-        const PZ_MIN = 1;
-        const PZ_MAX = 5;
-        const PZ_STEP = 0.15;
-
-        function pzApply() {
-            lbImage.style.transform = `translate(${pzX}px, ${pzY}px) scale(${pzScale})`;
-        }
-
-        function pzReset() {
-            pzScale = 1;
-            pzX = 0;
-            pzY = 0;
-            pzDragging = false;
-            lbImage.style.transition = 'transform 0.3s ease';
-            pzApply();
-            setTimeout(() => { lbImage.style.transition = 'none'; }, 300);
-            lbPanzoomEl.classList.remove('is-zoomed');
-        }
-
-        function pzIsZoomed() {
-            return pzScale > 1.05;
-        }
-
-        // Mouse wheel zoom
-        lbPanzoomEl.addEventListener('wheel', (e) => {
-            if (!lightbox.classList.contains('is-active')) return;
-            e.preventDefault();
-            const delta = e.deltaY > 0 ? -PZ_STEP : PZ_STEP;
-            const newScale = Math.min(PZ_MAX, Math.max(PZ_MIN, pzScale + delta));
-
-            // Zoom toward cursor position
-            const rect = lbPanzoomEl.getBoundingClientRect();
-            const cx = e.clientX - rect.left - rect.width / 2;
-            const cy = e.clientY - rect.top - rect.height / 2;
-            const ratio = 1 - newScale / pzScale;
-            pzX += (cx - pzX) * ratio;
-            pzY += (cy - pzY) * ratio;
-            pzScale = newScale;
-
-            if (pzScale <= PZ_MIN) { pzReset(); return; }
-            lbPanzoomEl.classList.add('is-zoomed');
-            lbImage.style.transition = 'none';
-            pzApply();
-        }, { passive: false });
-
-        // Mouse drag to pan
-        lbPanzoomEl.addEventListener('mousedown', (e) => {
-            if (!pzIsZoomed()) return;
-            e.preventDefault();
-            pzDragging = true;
-            pzStartX = e.clientX;
-            pzStartY = e.clientY;
-            pzStartPanX = pzX;
-            pzStartPanY = pzY;
-            lbPanzoomEl.classList.add('is-grabbing');
-        });
-
-        window.addEventListener('mousemove', (e) => {
-            if (!pzDragging) return;
-            pzX = pzStartPanX + (e.clientX - pzStartX);
-            pzY = pzStartPanY + (e.clientY - pzStartY);
-            lbImage.style.transition = 'none';
-            pzApply();
-        });
-
-        window.addEventListener('mouseup', () => {
-            pzDragging = false;
-            lbPanzoomEl.classList.remove('is-grabbing');
-        });
-
-        // Double-click to reset / toggle zoom
-        lbPanzoomEl.addEventListener('dblclick', (e) => {
-            e.stopPropagation();
-            if (pzIsZoomed()) {
-                pzReset();
-            } else {
-                pzScale = 2.5;
-                const rect = lbPanzoomEl.getBoundingClientRect();
-                pzX = (rect.width / 2 - (e.clientX - rect.left)) * (pzScale - 1) / pzScale;
-                pzY = (rect.height / 2 - (e.clientY - rect.top)) * (pzScale - 1) / pzScale;
-                lbImage.style.transition = 'transform 0.3s ease';
-                pzApply();
-                setTimeout(() => { lbImage.style.transition = 'none'; }, 300);
-                lbPanzoomEl.classList.add('is-zoomed');
-            }
-        });
-
-        // ── Touch: pinch-to-zoom + drag pan ──
-        let pzTouches = [];
-        let pzPinchStartDist = 0;
-        let pzPinchStartScale = 1;
-
-        function pzGetPinchDist(touches) {
-            const dx = touches[0].clientX - touches[1].clientX;
-            const dy = touches[0].clientY - touches[1].clientY;
-            return Math.hypot(dx, dy);
-        }
-
-        lbPanzoomEl.addEventListener('touchstart', (e) => {
-            if (!lightbox.classList.contains('is-active')) return;
-            pzTouches = e.touches;
-
-            if (e.touches.length === 2) {
-                // Pinch start
-                e.preventDefault();
-                pzPinchStartDist = pzGetPinchDist(e.touches);
-                pzPinchStartScale = pzScale;
-            } else if (e.touches.length === 1 && pzIsZoomed()) {
-                // Pan start (only when zoomed)
-                e.preventDefault();
-                pzDragging = true;
-                pzStartX = e.touches[0].clientX;
-                pzStartY = e.touches[0].clientY;
-                pzStartPanX = pzX;
-                pzStartPanY = pzY;
-            }
-        }, { passive: false });
-
-        lbPanzoomEl.addEventListener('touchmove', (e) => {
-            if (e.touches.length === 2) {
-                // Pinch zoom
-                e.preventDefault();
-                const dist = pzGetPinchDist(e.touches);
-                const newScale = Math.min(PZ_MAX, Math.max(PZ_MIN, pzPinchStartScale * (dist / pzPinchStartDist)));
-                pzScale = newScale;
-                if (pzScale > PZ_MIN) lbPanzoomEl.classList.add('is-zoomed');
-                lbImage.style.transition = 'none';
-                pzApply();
-            } else if (e.touches.length === 1 && pzDragging) {
-                // Pan
-                e.preventDefault();
-                pzX = pzStartPanX + (e.touches[0].clientX - pzStartX);
-                pzY = pzStartPanY + (e.touches[0].clientY - pzStartY);
-                lbImage.style.transition = 'none';
-                pzApply();
-            }
-        }, { passive: false });
-
-        lbPanzoomEl.addEventListener('touchend', (e) => {
-            pzDragging = false;
-            if (pzScale <= PZ_MIN) pzReset();
-        });
-
-        // ── Lightbox open / close / nav ──
-        function openLightbox(index) {
-            currentLbIndex = index;
-            const d = dressData[index];
-            if (!d) return;
-            lbImage.src = d.image;
-            lbImage.alt = d.title;
-            lbVol.textContent = d.vol;
-            lbTitle.textContent = d.title;
-            pzReset();
-            lightbox.classList.add('is-active');
-            lightbox.setAttribute('aria-hidden', 'false');
-            document.body.style.overflow = 'hidden';
-            closeModal();
-        }
-
-        function closeLightbox() {
-            pzReset();
-            lightbox.classList.remove('is-active');
-            lightbox.setAttribute('aria-hidden', 'true');
-            document.body.style.overflow = '';
-        }
-
-        function lightboxNav(direction) {
-            pzReset();
-            currentLbIndex = (currentLbIndex + direction + dressData.length) % dressData.length;
-            const d = dressData[currentLbIndex];
-            lbImage.src = d.image;
-            lbImage.alt = d.title;
-            lbVol.textContent = d.vol;
-            lbTitle.textContent = d.title;
-        }
-
-        // Double-click image → lightbox
-        document.querySelectorAll('.card-image-wrap').forEach((wrap) => {
-            const card = wrap.closest('.dress-card');
-            wrap.addEventListener('dblclick', (e) => {
-                e.stopPropagation();
-                openLightbox(getDataIndex(card));
-            });
-        });
-
-        // Modal image click → lightbox
-        modalImage.addEventListener('click', () => {
-            const idx = dressData.findIndex(d => {
-                const src = modalImage.src;
-                return src.endsWith(d.image) || src.includes(d.image);
-            });
-            openLightbox(idx >= 0 ? idx : 0);
-        });
-
-        lbClose.addEventListener('click', closeLightbox);
-        lbPrev.addEventListener('click', (e) => { e.stopPropagation(); lightboxNav(-1); });
-        lbNext.addEventListener('click', (e) => { e.stopPropagation(); lightboxNav(1); });
-        lightbox.addEventListener('click', (e) => {
-            if (e.target === lightbox) closeLightbox();
-        });
-
-        // Keyboard
-        document.addEventListener('keydown', (e) => {
-            if (lightbox.classList.contains('is-active')) {
-                if (e.key === 'Escape') closeLightbox();
-                if (e.key === 'ArrowLeft') lightboxNav(-1);
-                if (e.key === 'ArrowRight') lightboxNav(1);
-                if (e.key === '+' || e.key === '=') {
-                    pzScale = Math.min(PZ_MAX, pzScale + PZ_STEP * 2);
-                    lbPanzoomEl.classList.add('is-zoomed');
-                    lbImage.style.transition = 'transform 0.15s ease';
-                    pzApply();
-                    setTimeout(() => { lbImage.style.transition = 'none'; }, 150);
-                }
-                if (e.key === '-') {
-                    pzScale = Math.max(PZ_MIN, pzScale - PZ_STEP * 2);
-                    if (pzScale <= PZ_MIN) pzReset();
-                    else { lbImage.style.transition = 'transform 0.15s ease'; pzApply(); setTimeout(() => { lbImage.style.transition = 'none'; }, 150); }
-                }
-            } else if (modal.classList.contains('is-active')) {
-                if (e.key === 'Escape') closeModal();
-            }
-        });
-
-        // Touch swipe for lightbox navigation (only when NOT zoomed)
-        let touchStartX = 0;
-        lightbox.addEventListener('touchstart', (e) => {
-            if (e.touches.length === 1 && !pzIsZoomed()) {
-                touchStartX = e.touches[0].clientX;
-            }
-        }, { passive: true });
-        lightbox.addEventListener('touchend', (e) => {
-            if (pzIsZoomed()) return;
-            const diff = touchStartX - e.changedTouches[0].clientX;
-            if (Math.abs(diff) > 50) lightboxNav(diff > 0 ? 1 : -1);
-        }, { passive: true });
-    </script>
+    <script src="script.js"></script>
 
 </body>
 

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>森と光の花嫁 — AI Wedding Dress Book</title>
+    <meta name="description" content="朝靄に包まれた森の中、木漏れ日が花嫁を祝福するように降り注ぐ。">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Noto+Serif+JP:wght@200;300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Zen+Kaku+Gothic+New:wght@300;400;500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <button class="sidebar-toggle" id="sidebarToggle" aria-label="メニュー"><span></span><span></span><span></span></button>
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+    <aside class="sidebar" id="sidebar">
+        <a href="index.html" class="sidebar-brand">AI Wedding Dress Book</a>
+        <p class="sidebar-tagline">幻想的な花嫁のドレス図鑑</p>
+        <div class="sidebar-divider"></div>
+        <p class="sidebar-label">Collections</p>
+        <ul class="sidebar-nav">
+            <li><a href="index.html" class="sidebar-link">Home<span class="sidebar-link-sub">すべてのコレクション</span></a></li>
+            <li><a href="urban-night.html" class="sidebar-link">都市の夜に佇む花嫁<span class="sidebar-link-sub">Vol.
+                        1–3</span></a></li>
+            <li><a href="winter-silence.html" class="sidebar-link">冬の静寂と花嫁<span class="sidebar-link-sub">Vol.
+                        4–5</span></a></li>
+            <li><a href="forest-light.html" class="sidebar-link is-active">森と光の花嫁<span class="sidebar-link-sub">Vol.
+                        6–7</span></a></li>
+            <li><a href="chapel-light.html" class="sidebar-link">聖堂の光と真珠の花嫁<span class="sidebar-link-sub">Vol.
+                        8–11</span></a></li>
+        </ul>
+        <div class="sidebar-footer">
+            <p class="sidebar-footer-text">© 2026 AI Wedding Dress Book</p>
+        </div>
+    </aside>
+    <div class="site-content">
+        <header class="site-header" id="siteHeader">
+            <div class="header-inner"><span class="header-brand">AI Wedding Dress Book</span><span
+                    class="header-sep"></span><span class="header-tagline">幻想的な花嫁のドレス図鑑</span></div>
+        </header>
+        <section class="hero">
+            <p class="hero-eyebrow">Collection C</p>
+            <h1 class="hero-title">森と光の花嫁</h1>
+            <p class="hero-subtitle">— 木漏れ日と花冠の祝福 —</p>
+            <div class="hero-line"></div>
+        </section>
+        <main class="gallery-wrapper">
+            <section class="collection-section">
+                <div class="collection-header">
+                    <div class="collection-ornament-top"><span class="collection-ornament-diamond">◆</span></div>
+                    <p class="collection-eyebrow">Forest Light Bride</p>
+                    <h2 class="collection-title">森と光の花嫁</h2>
+                    <p class="collection-desc">朝靄に包まれた森の中、木漏れ日が花嫁を祝福するように降り注ぐ。<br>花冠とナチュラルブーケが、自然と一体になる幻想的なシーンを紡ぎます。</p>
+                    <div class="collection-ornament-bottom"><span>✦</span></div>
+                </div>
+                <div class="collection-grid">
+                    <div class="masonry">
+                        <article class="dress-card" data-index="1">
+                            <div class="card-image-wrap"><img src="photos/dress-006.jpg" alt="Vol.6 — 霧の森に佇む花冠の花嫁"
+                                    loading="lazy">
+                                <div class="card-overlay"><span class="overlay-icon">✦</span><span
+                                        class="overlay-text">Details</span></div>
+                            </div>
+                            <div class="card-info"><span class="card-vol">Vol. 6</span>
+                                <h2 class="card-title">霧の森に佇む花冠の花嫁</h2>
+                                <p class="card-date">2026.02.20</p>
+                            </div>
+                        </article>
+                        <article class="dress-card" data-index="2">
+                            <div class="card-image-wrap"><img src="photos/dress-007.jpg" alt="Vol.7 — 木漏れ日と花束の横顔"
+                                    loading="lazy">
+                                <div class="card-overlay"><span class="overlay-icon">✦</span><span
+                                        class="overlay-text">Details</span></div>
+                            </div>
+                            <div class="card-info"><span class="card-vol">Vol. 7</span>
+                                <h2 class="card-title">木漏れ日と花束の横顔</h2>
+                                <p class="card-date">2026.02.21</p>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </section>
+        </main>
+        <footer class="site-footer">
+            <div class="footer-ornament">— ✦ —</div>
+            <p class="footer-text">すべての画像はAIによって生成されたものです。実在するドレスデザインではありません。</p>
+            <p class="footer-brand">AI Wedding Dress Book</p>
+            <p class="footer-copy">&copy; 2026</p>
+        </footer>
+    </div>
+    <div class="modal-backdrop" id="modal" aria-hidden="true" role="dialog">
+        <div class="modal-card"><button class="modal-close" id="modalClose" aria-label="閉じる">&times;</button>
+            <div class="modal-image-wrap"><img class="modal-image" id="modalImage" src="" alt=""></div>
+            <div class="modal-body"><span class="modal-vol" id="modalVol"></span>
+                <h2 class="modal-title" id="modalTitle"></h2>
+                <p class="modal-date" id="modalDate"></p>
+                <div class="modal-divider"></div>
+                <div class="modal-section">
+                    <h3 class="modal-section-title"><span class="section-icon">◇</span> デザインのポイント</h3>
+                    <div class="modal-points" id="modalPoints"></div>
+                </div>
+                <div class="modal-section">
+                    <h3 class="modal-section-title"><span class="section-icon">◇</span> インスピレーション</h3>
+                    <p class="modal-inspiration" id="modalInspiration"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="lightbox" id="lightbox" aria-hidden="true"><button class="lightbox-close" id="lbClose"
+            aria-label="閉じる">&times;</button><button class="lightbox-prev" id="lbPrev"
+            aria-label="前の画像">&#8249;</button><button class="lightbox-next" id="lbNext"
+            aria-label="次の画像">&#8250;</button>
+        <div class="lightbox-panzoom" id="lbPanzoom"><img class="lightbox-img" id="lbImage" src="" alt=""></div>
+        <div class="lightbox-caption"><span class="lightbox-vol" id="lbVol"></span><span class="lightbox-title"
+                id="lbTitle"></span></div>
+    </div>
+    <script>
+        const dressData = [
+            { vol: "Vol. 6", title: "霧の森に佇む花冠の花嫁", date: "2026.02.20", image: "photos/dress-006.jpg", points: [{ tag: "Silhouette", title: "Vネックが描くギリシャ的な優美", body: "深いVネックラインからウエストを通り、足元まで流れる柔らかなAラインが、古代ギリシャの女神像を思わせます。霧に包まれた森の中で、ドレスの裾が地面に自然と広がり、大地と花嫁が一体になるようなシルエットを生みます。" }, { tag: "Detail", title: "野の花を編み込んだフラワークラウン", body: "白い小花とグリーンの蔓を編み込んだナチュラルなフラワークラウンが、森の妖精のような雰囲気を纏わせます。ゆるく波打つ髪と相まって、自然の一部として溶け込む美しさを実現しています。" }, { tag: "Material", title: "アイボリーシフォンの透明感", body: "軽やかなシフォン素材がわずかな風にもなびき、森の中の空気を纏うような透明感を生みます。ホワイトとグリーンで束ねたナチュラルブーケが、ドレスのアイボリーと森の緑を美しく繋いでいます。" }], inspiration: "シェイクスピアの「夏の夜の夢」に登場する森の妖精ティターニア。霧に包まれた森は現実と幻想の境界。そこに佇む花嫁は、花と緑と光で祝福された物語のヒロインです。" },
+            { vol: "Vol. 7", title: "木漏れ日と花束の横顔", date: "2026.02.21", image: "photos/dress-007.jpg", points: [{ tag: "Silhouette", title: "光に向かう横顔のプロフィール", body: "森の奥から差し込む木漏れ日に向かって微笑む横顔。Vネックドレスの肩のラインと、フィッシュテールに編まれた髪の流れが、光の方向に向かう凛とした美しさを際立たせます。" }, { tag: "Detail", title: "フィッシュテールブレイドと花冠", body: "丁寧に編み込まれたフィッシュテールブレイドに、小花と葉を織り交ぜたフラワークラウンを合わせたヘアスタイル。繊細な手仕事の美しさが、ナチュラルなドレスの世界観と完璧に調和します。" }, { tag: "Material", title: "ホワイトブーケの清らかな質感", body: "白いラナンキュラスとグリーンのユーカリを束ねたナチュラルブーケ。花嫁が胸元に抱えるその姿は、まるで森から贈られた祝福の花束。ドレスのアイボリーと花の白が、木漏れ日の中で柔らかく溶け合います。" }], inspiration: "ジョン・ウィリアム・ウォーターハウスが描く「花を摘む乙女」の世界。朝靄の森の中、光と植物に祝福される花嫁は、自然そのものが紡ぐ美のカンバスに立っています。" }
+        ];
+    </script>
+    <script src="script.js"></script>
+</body>
+
+</html>
