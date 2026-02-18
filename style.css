@@ -1,6 +1,6 @@
 /* ═══════════════════════════════════════════════════
    AI Wedding Dress Book — "The Ethereal Boutique"
-   High-end masonry gallery with lightbox & sticky header
+   Luxury multi-page gallery with sidebar navigation
    ═══════════════════════════════════════════════════ */
 
 /* ── Reset & Base ── */
@@ -13,25 +13,34 @@
 }
 
 :root {
+  /* Layout */
+  --sidebar-w: 280px;
+  --header-h: 64px;
+
+  /* Palette */
   --white: #FFFFFF;
   --ivory: #FAFAF8;
   --cream: #F7F5F0;
   --champagne: #F0EBE1;
-  --gold: #B8976A;
-  --gold-light: #D4C4A0;
-  --gold-faint: #E8DFC8;
+  --gold: #C5A059;
+  --gold-light: #D9C08A;
+  --gold-faint: #EDE3CC;
   --rose: #C9A0A0;
   --rose-light: #E8D0D0;
   --charcoal: #2A2A2A;
   --warm-gray: #7A7470;
   --light-gray: #B0AAA4;
-  --shadow-soft: 0 8px 40px rgba(100, 80, 60, 0.08);
-  --shadow-hover: 0 20px 60px rgba(100, 80, 60, 0.14);
+  --text: #3D3A38;
+
+  /* Shadows */
+  --shadow-soft: 0 8px 40px rgba(100, 80, 60, 0.07);
+  --shadow-hover: 0 20px 60px rgba(100, 80, 60, 0.13);
   --shadow-float: 0 30px 80px rgba(100, 80, 60, 0.18);
-  --radius: 16px;
-  --radius-lg: 24px;
+
+  /* Misc */
+  --radius: 12px;
+  --radius-lg: 20px;
   --transition: 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  --header-h: 60px;
 }
 
 html {
@@ -55,70 +64,265 @@ img {
   max-width: 100%;
 }
 
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
 /* ═══════════════════════════════════════
-   STICKY HEADER ("scroll-following")
+   SIDEBAR NAVIGATION
+   ═══════════════════════════════════════ */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: var(--sidebar-w);
+  height: 100vh;
+  background: #F9F9F7;
+  border-right: 1px solid var(--gold-faint);
+  z-index: 1500;
+  display: flex;
+  flex-direction: column;
+  padding: 2.8rem 2rem 2rem;
+  box-sizing: border-box;
+  overflow-y: auto;
+  transition: transform 0.38s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.sidebar-brand {
+  font-family: 'Playfair Display', 'Cormorant Garamond', serif;
+  font-size: 1.05rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  color: var(--charcoal);
+  text-decoration: none;
+  line-height: 1.4;
+  margin-bottom: 0.35rem;
+  display: block;
+}
+
+.sidebar-brand:hover {
+  color: var(--gold);
+}
+
+.sidebar-tagline {
+  font-family: 'Zen Kaku Gothic New', sans-serif;
+  font-size: 0.6rem;
+  font-weight: 300;
+  color: var(--light-gray);
+  letter-spacing: 0.08em;
+  margin-bottom: 2.5rem;
+}
+
+.sidebar-divider {
+  width: 28px;
+  height: 1px;
+  background: var(--gold-faint);
+  margin-bottom: 2rem;
+}
+
+.sidebar-label {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--light-gray);
+  margin-bottom: 1rem;
+}
+
+.sidebar-nav {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  flex: 1;
+}
+
+.sidebar-nav li {
+  margin-bottom: 0.1rem;
+}
+
+.sidebar-link {
+  display: block;
+  font-family: 'Noto Serif JP', serif;
+  font-size: 0.8rem;
+  font-weight: 400;
+  color: var(--charcoal);
+  text-decoration: none;
+  padding: 0.7rem 1rem;
+  border-radius: 8px;
+  letter-spacing: 0.03em;
+  transition: background 0.2s, color 0.2s;
+  line-height: 1.5;
+}
+
+.sidebar-link:hover {
+  background: var(--cream);
+  color: var(--gold);
+}
+
+.sidebar-link.is-active {
+  background: linear-gradient(135deg, rgba(197, 160, 89, 0.1), rgba(197, 160, 89, 0.05));
+  color: var(--gold);
+  font-weight: 500;
+  border-left: 2px solid var(--gold);
+  padding-left: calc(1rem - 2px);
+}
+
+.sidebar-link-sub {
+  font-family: 'Zen Kaku Gothic New', sans-serif;
+  font-size: 0.6rem;
+  font-weight: 300;
+  color: var(--light-gray);
+  display: block;
+  margin-top: 0.12rem;
+  letter-spacing: 0.05em;
+}
+
+.sidebar-footer {
+  margin-top: auto;
+  padding-top: 2rem;
+  border-top: 1px solid var(--gold-faint);
+}
+
+.sidebar-footer-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.6rem;
+  color: var(--light-gray);
+  letter-spacing: 0.1em;
+  font-style: italic;
+}
+
+/* Sidebar overlay (mobile backdrop) */
+.sidebar-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(18, 16, 14, 0.5);
+  z-index: 1400;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+
+.sidebar-overlay.is-visible {
+  display: block;
+  opacity: 1;
+}
+
+/* Hamburger toggle button — hidden on desktop */
+.sidebar-toggle {
+  display: none;
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  z-index: 1600;
+  width: 44px;
+  height: 44px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid var(--gold-faint);
+  border-radius: 10px;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 5px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+  transition: background 0.2s, box-shadow 0.2s;
+}
+
+.sidebar-toggle span {
+  display: block;
+  width: 18px;
+  height: 1.5px;
+  background: var(--charcoal);
+  border-radius: 1px;
+  transition: transform 0.3s, opacity 0.3s;
+}
+
+.sidebar-toggle:hover {
+  background: var(--cream);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* ═══════════════════════════════════════
+   SITE CONTENT WRAPPER
+   Offset by sidebar width on desktop
+   ═══════════════════════════════════════ */
+.site-content {
+  margin-left: var(--sidebar-w);
+  min-height: 100vh;
+  transition: margin-left 0.38s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ═══════════════════════════════════════
+   STICKY HEADER
+   Must start AFTER the sidebar on desktop
    ═══════════════════════════════════════ */
 .site-header {
   position: fixed;
   top: 0;
-  left: 0;
+  left: var(--sidebar-w);
+  /* ← KEY FIX: starts after sidebar */
   right: 0;
-  z-index: 900;
+  z-index: 1200;
   height: var(--header-h);
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(255, 255, 255, 0.82);
-  backdrop-filter: blur(18px) saturate(1.6);
-  -webkit-backdrop-filter: blur(18px) saturate(1.6);
-  border-bottom: 1px solid rgba(212, 196, 160, 0.25);
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(20px) saturate(1.5);
+  -webkit-backdrop-filter: blur(20px) saturate(1.5);
+  border-bottom: 1px solid rgba(197, 160, 89, 0.15);
   transition: background 0.35s, box-shadow 0.35s;
 }
 
 .site-header.is-scrolled {
-  background: rgba(255, 255, 255, 0.95);
-  box-shadow: 0 2px 24px rgba(100, 80, 60, 0.06);
+  background: rgba(255, 255, 255, 0.97);
+  box-shadow: 0 2px 24px rgba(100, 80, 60, 0.07);
 }
 
 .header-inner {
   display: flex;
   align-items: center;
-  gap: 0.7rem;
+  gap: 0.8rem;
 }
 
 .header-brand {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.15rem;
+  font-family: 'Playfair Display', 'Cormorant Garamond', serif;
+  font-size: 1.05rem;
   font-weight: 400;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.16em;
   color: var(--charcoal);
   white-space: nowrap;
 }
 
 .header-sep {
   width: 1px;
-  height: 18px;
+  height: 16px;
   background: var(--gold-light);
+  opacity: 0.6;
 }
 
 .header-tagline {
   font-family: 'Noto Serif JP', serif;
-  font-size: 0.65rem;
+  font-size: 0.62rem;
   font-weight: 300;
-  letter-spacing: 0.22em;
+  letter-spacing: 0.2em;
   color: var(--warm-gray);
   white-space: nowrap;
 }
 
 /* ═══════════════════════════════════════
-   HERO SECTION (replaces old tall header)
+   HERO SECTION
    ═══════════════════════════════════════ */
 .hero {
   position: relative;
   text-align: center;
-  padding: 10rem 2rem 5.5rem;
+  padding: calc(var(--header-h) + 6rem) 2rem 6rem;
   background:
-    radial-gradient(ellipse at 50% 0%, rgba(232, 223, 200, 0.2) 0%, transparent 55%),
+    radial-gradient(ellipse at 50% 0%, rgba(232, 223, 200, 0.22) 0%, transparent 60%),
     var(--white);
   overflow: hidden;
 }
@@ -129,45 +333,45 @@ img {
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
-  width: 80%;
-  max-width: 600px;
+  width: 70%;
+  max-width: 500px;
   height: 1px;
   background: linear-gradient(90deg, transparent, var(--gold-faint), var(--gold-light), var(--gold-faint), transparent);
 }
 
 .hero-eyebrow {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 0.68rem;
+  font-size: 0.65rem;
   font-weight: 500;
-  letter-spacing: 0.55em;
+  letter-spacing: 0.6em;
   text-transform: uppercase;
   color: var(--gold);
-  margin-bottom: 1rem;
+  margin-bottom: 1.2rem;
 }
 
 .hero-title {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(2.4rem, 6vw, 4.2rem);
-  font-weight: 300;
-  letter-spacing: 0.14em;
+  font-family: 'Playfair Display', 'Cormorant Garamond', serif;
+  font-size: clamp(2.2rem, 5vw, 3.8rem);
+  font-weight: 400;
+  letter-spacing: 0.1em;
   color: var(--charcoal);
   line-height: 1.2;
-  margin-bottom: 0.6rem;
+  margin-bottom: 0.8rem;
 }
 
 .hero-subtitle {
   font-family: 'Noto Serif JP', serif;
-  font-size: clamp(0.78rem, 2vw, 0.95rem);
+  font-size: clamp(0.75rem, 1.8vw, 0.9rem);
   font-weight: 200;
   letter-spacing: 0.35em;
   color: var(--warm-gray);
 }
 
 .hero-line {
-  width: 50px;
+  width: 40px;
   height: 1px;
   background: var(--gold);
-  margin: 2rem auto 0;
+  margin: 2.5rem auto 0;
 }
 
 /* ═══════════════════════════════════════
@@ -178,17 +382,15 @@ img {
 }
 
 /* ═══════════════════════════════════════
-   COLLECTION SECTION — Luxury Catalog
-   Full-bleed zebra stripe with generous spacing
+   COLLECTION SECTION
    ═══════════════════════════════════════ */
 .collection-section {
-  padding: 7.5rem 0 6rem;
+  padding: 8rem 0 7rem;
   background: var(--white);
   overflow: hidden;
   clear: both;
 }
 
-/* Zebra stripe: alternate off-white */
 .collection-section:nth-child(even) {
   background: var(--ivory);
 }
@@ -198,34 +400,33 @@ img {
 }
 
 .collection-inner {
-  max-width: 1320px;
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 0 2rem;
+  padding: 0 2.5rem;
 }
 
 /* ── Collection Header ── */
 .collection-header {
   text-align: center;
-  padding: 0 1.5rem 3.5rem;
+  padding: 0 2rem 4rem;
   position: relative;
-  max-width: 800px;
+  max-width: 760px;
   margin: 0 auto;
 }
 
-/* Ornamental top divider — two lines with diamond */
 .collection-ornament-top {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 1rem;
-  margin-bottom: 2.5rem;
+  margin-bottom: 2.8rem;
 }
 
 .collection-ornament-top::before,
 .collection-ornament-top::after {
   content: '';
   flex: 1;
-  max-width: 180px;
+  max-width: 160px;
   height: 0.5px;
   background: linear-gradient(90deg, transparent, var(--gold-light));
 }
@@ -235,16 +436,16 @@ img {
 }
 
 .collection-ornament-diamond {
-  font-size: 0.55rem;
+  font-size: 0.5rem;
   color: var(--gold);
   line-height: 1;
 }
 
 .collection-eyebrow {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 0.65rem;
+  font-size: 0.62rem;
   font-weight: 500;
-  letter-spacing: 0.6em;
+  letter-spacing: 0.65em;
   text-transform: uppercase;
   color: var(--gold);
   margin-bottom: 1.2rem;
@@ -252,26 +453,25 @@ img {
 
 .collection-title {
   font-family: 'Playfair Display', 'Noto Serif JP', serif;
-  font-size: clamp(1.6rem, 4vw, 2.4rem);
+  font-size: clamp(1.5rem, 3.5vw, 2.2rem);
   font-weight: 400;
-  letter-spacing: 0.22em;
+  letter-spacing: 0.18em;
   color: var(--charcoal);
   line-height: 1.5;
-  margin-bottom: 1.4rem;
+  margin-bottom: 1.5rem;
 }
 
 .collection-desc {
   font-family: 'Zen Kaku Gothic New', sans-serif;
-  font-size: 0.84rem;
+  font-size: 0.82rem;
   font-weight: 300;
   letter-spacing: 0.06em;
-  line-height: 2.1;
+  line-height: 2.2;
   color: var(--warm-gray);
-  max-width: 580px;
-  margin: 0 auto 2rem;
+  max-width: 560px;
+  margin: 0 auto 2.5rem;
 }
 
-/* Ornamental bottom divider */
 .collection-ornament-bottom {
   display: flex;
   align-items: center;
@@ -282,28 +482,28 @@ img {
 .collection-ornament-bottom::before,
 .collection-ornament-bottom::after {
   content: '';
-  width: 40px;
+  width: 36px;
   height: 0.5px;
   background: var(--gold-faint);
 }
 
 .collection-ornament-bottom span {
-  font-size: 0.4rem;
+  font-size: 0.38rem;
   color: var(--gold-faint);
   line-height: 1;
 }
 
-/* ── Hero Banner (optional per collection) ── */
+/* ── Hero Banner (optional) ── */
 .collection-hero {
-  max-width: 1320px;
-  margin: 0 auto 3rem;
-  padding: 0 2rem;
+  max-width: 1200px;
+  margin: 0 auto 3.5rem;
+  padding: 0 2.5rem;
 }
 
 .collection-hero img {
   width: 100%;
   height: auto;
-  max-height: 420px;
+  max-height: 400px;
   object-fit: cover;
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-soft);
@@ -311,37 +511,36 @@ img {
 
 /* ── Grid Container ── */
 .collection-grid {
-  max-width: 1320px;
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 0 2rem;
+  padding: 0 2.5rem;
 }
 
 /* ═══════════════════════════════════════
-   MASONRY (inside each collection)
+   MASONRY LAYOUT
    ═══════════════════════════════════════ */
 .masonry {
   columns: 3;
-  column-gap: 1.8rem;
+  column-gap: 2rem;
   overflow: hidden;
 }
 
 /* ═══════════════════════════════════════
-   DRESS CARD (masonry items)
+   DRESS CARD
    ═══════════════════════════════════════ */
 .dress-card {
   break-inside: avoid;
-  margin-bottom: 1.8rem;
+  margin-bottom: 2rem;
   cursor: pointer;
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius);
   overflow: hidden;
   background: var(--white);
-  box-shadow: var(--shadow-soft);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
   transition:
     transform var(--transition),
     box-shadow var(--transition);
-  /* fade-in via IntersectionObserver */
   opacity: 0;
-  transform: translateY(32px);
+  transform: translateY(28px);
 }
 
 .dress-card.is-visible {
@@ -354,7 +553,7 @@ img {
 }
 
 .dress-card:hover {
-  transform: translateY(-6px);
+  transform: translateY(-7px);
   box-shadow: var(--shadow-hover);
 }
 
@@ -380,7 +579,7 @@ img {
   transform: scale(1.05);
 }
 
-/* Overlay — slides up from bottom on hover */
+/* Overlay */
 .card-overlay {
   position: absolute;
   inset: 0;
@@ -390,7 +589,7 @@ img {
   justify-content: flex-end;
   padding-bottom: 2rem;
   gap: 0.35rem;
-  background: linear-gradient(to top, rgba(30, 25, 20, 0.55) 0%, rgba(30, 25, 20, 0) 50%);
+  background: linear-gradient(to top, rgba(30, 25, 20, 0.52) 0%, rgba(30, 25, 20, 0) 50%);
   opacity: 0;
   transition: opacity 0.45s ease;
 }
@@ -414,9 +613,9 @@ img {
 
 .overlay-text {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 0.72rem;
+  font-size: 0.7rem;
   font-weight: 500;
-  letter-spacing: 0.35em;
+  letter-spacing: 0.38em;
   text-transform: uppercase;
   color: var(--white);
   transform: translateY(10px);
@@ -429,47 +628,47 @@ img {
 
 /* Card Info */
 .card-info {
-  padding: 1.3rem 1.5rem 1.5rem;
+  padding: 1.4rem 1.6rem 1.6rem;
 }
 
 .card-vol {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 0.64rem;
+  font-size: 0.62rem;
   font-weight: 500;
-  letter-spacing: 0.4em;
+  letter-spacing: 0.42em;
   text-transform: uppercase;
   color: var(--gold);
 }
 
 .card-title {
   font-family: 'Noto Serif JP', serif;
-  font-size: 0.95rem;
+  font-size: 0.92rem;
   font-weight: 400;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.07em;
   color: var(--charcoal);
-  margin: 0.4rem 0 0.3rem;
-  line-height: 1.6;
+  margin: 0.45rem 0 0.3rem;
+  line-height: 1.65;
 }
 
 .card-date {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 0.72rem;
+  font-size: 0.7rem;
   font-weight: 400;
   color: var(--light-gray);
   letter-spacing: 0.18em;
 }
 
 /* ═══════════════════════════════════════
-   DETAIL MODAL (design points & inspiration)
+   DETAIL MODAL
    ═══════════════════════════════════════ */
 .modal-backdrop {
   position: fixed;
   inset: 0;
-  z-index: 1000;
+  z-index: 2000;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(42, 42, 42, 0.4);
+  background: rgba(42, 42, 42, 0.42);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   opacity: 0;
@@ -485,7 +684,7 @@ img {
 .modal-card {
   position: relative;
   width: 92vw;
-  max-width: 700px;
+  max-width: 680px;
   max-height: 88vh;
   background: var(--white);
   border-radius: var(--radius-lg);
@@ -522,7 +721,7 @@ img {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(255, 255, 255, 0.85);
+  background: rgba(255, 255, 255, 0.88);
   backdrop-filter: blur(6px);
   border: none;
   border-radius: 50%;
@@ -557,45 +756,45 @@ img {
 }
 
 .modal-body {
-  padding: 2rem 2.5rem 2.5rem;
+  padding: 2.2rem 2.5rem 2.8rem;
 }
 
 .modal-vol {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 0.68rem;
+  font-size: 0.65rem;
   font-weight: 500;
-  letter-spacing: 0.45em;
+  letter-spacing: 0.48em;
   text-transform: uppercase;
   color: var(--gold);
 }
 
 .modal-title {
   font-family: 'Noto Serif JP', serif;
-  font-size: 1.35rem;
+  font-size: 1.3rem;
   font-weight: 400;
   letter-spacing: 0.1em;
   color: var(--charcoal);
-  margin: 0.5rem 0 0.3rem;
+  margin: 0.55rem 0 0.35rem;
   line-height: 1.6;
 }
 
 .modal-date {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 0.76rem;
+  font-size: 0.74rem;
   font-weight: 400;
   color: var(--light-gray);
   letter-spacing: 0.18em;
 }
 
 .modal-divider {
-  width: 36px;
+  width: 32px;
   height: 1px;
   background: var(--gold-light);
-  margin: 1.8rem 0;
+  margin: 2rem 0;
 }
 
 .modal-section {
-  margin-bottom: 2rem;
+  margin-bottom: 2.2rem;
 }
 
 .modal-section:last-child {
@@ -604,7 +803,7 @@ img {
 
 .modal-section-title {
   font-family: 'Noto Serif JP', serif;
-  font-size: 0.82rem;
+  font-size: 0.8rem;
   font-weight: 500;
   letter-spacing: 0.18em;
   color: var(--charcoal);
@@ -616,63 +815,63 @@ img {
 
 .section-icon {
   color: var(--gold);
-  font-size: 0.6rem;
+  font-size: 0.58rem;
 }
 
 .modal-points {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 1.1rem;
 }
 
 .point-card {
-  padding: 1.3rem 1.5rem;
+  padding: 1.4rem 1.6rem;
   background: var(--cream);
   border-radius: var(--radius);
-  border-left: 3px solid var(--gold-light);
+  border-left: 2px solid var(--gold-light);
 }
 
 .point-tag {
   display: inline-block;
   font-family: 'Zen Kaku Gothic New', sans-serif;
-  font-size: 0.58rem;
+  font-size: 0.56rem;
   font-weight: 500;
   letter-spacing: 0.22em;
   text-transform: uppercase;
   color: var(--gold);
-  background: rgba(184, 151, 106, 0.08);
+  background: rgba(197, 160, 89, 0.08);
   padding: 0.18rem 0.65rem;
-  border-radius: 12px;
-  margin-bottom: 0.45rem;
+  border-radius: 10px;
+  margin-bottom: 0.5rem;
 }
 
 .point-title {
   font-family: 'Noto Serif JP', serif;
-  font-size: 0.92rem;
+  font-size: 0.9rem;
   font-weight: 400;
   color: var(--charcoal);
-  margin-bottom: 0.45rem;
+  margin-bottom: 0.5rem;
   line-height: 1.5;
 }
 
 .point-body {
   font-family: 'Zen Kaku Gothic New', sans-serif;
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   font-weight: 300;
-  line-height: 1.95;
+  line-height: 2;
   color: var(--warm-gray);
 }
 
 .modal-inspiration {
   font-family: 'Zen Kaku Gothic New', sans-serif;
-  font-size: 0.85rem;
+  font-size: 0.83rem;
   font-weight: 300;
   line-height: 2;
   color: var(--warm-gray);
-  padding: 1.3rem 1.5rem;
+  padding: 1.4rem 1.6rem;
   background: linear-gradient(135deg, #FBF8F2 0%, #F5EFE4 100%);
   border-radius: var(--radius);
-  border-left: 3px solid var(--rose-light);
+  border-left: 2px solid var(--rose-light);
   position: relative;
 }
 
@@ -689,16 +888,16 @@ img {
 }
 
 /* ═══════════════════════════════════════
-   LIGHTBOX (full-screen image viewer)
+   LIGHTBOX (full-screen viewer + panzoom)
    ═══════════════════════════════════════ */
 .lightbox {
   position: fixed;
   inset: 0;
-  z-index: 2000;
+  z-index: 3000;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(18, 16, 14, 0.92);
+  background: rgba(18, 16, 14, 0.93);
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
   opacity: 0;
@@ -712,7 +911,6 @@ img {
   visibility: visible;
 }
 
-/* Panzoom container */
 .lightbox-panzoom {
   position: relative;
   display: flex;
@@ -753,7 +951,7 @@ img {
 @keyframes lbFadeIn {
   from {
     opacity: 0;
-    transform: scale(0.92);
+    transform: scale(0.93);
   }
 
   to {
@@ -762,7 +960,6 @@ img {
   }
 }
 
-/* Navigation arrows */
 .lightbox-prev,
 .lightbox-next {
   position: absolute;
@@ -832,251 +1029,21 @@ img {
 
 .lightbox-vol {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 0.65rem;
+  font-size: 0.62rem;
   font-weight: 500;
   letter-spacing: 0.5em;
   text-transform: uppercase;
-  color: rgba(184, 151, 106, 0.85);
+  color: rgba(197, 160, 89, 0.85);
   display: block;
   margin-bottom: 0.25rem;
 }
 
 .lightbox-title {
   font-family: 'Noto Serif JP', serif;
-  font-size: 0.95rem;
+  font-size: 0.92rem;
   font-weight: 300;
   letter-spacing: 0.12em;
   color: rgba(255, 255, 255, 0.85);
-}
-
-/* ═══════════════════════════════════════
-   FOOTER
-   ═══════════════════════════════════════ */
-.site-footer {
-  text-align: center;
-  padding: 4rem 2rem 4.5rem;
-  margin-top: 2rem;
-  background: var(--white);
-  border-top: 0.5px solid var(--gold-faint);
-  position: relative;
-  clear: both;
-}
-
-.footer-ornament {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 0.85rem;
-  color: var(--gold-light);
-  letter-spacing: 0.55em;
-  margin-bottom: 0.8rem;
-}
-
-.footer-text {
-  font-family: 'Zen Kaku Gothic New', sans-serif;
-  font-size: 0.7rem;
-  font-weight: 300;
-  color: var(--light-gray);
-  line-height: 2;
-  letter-spacing: 0.06em;
-}
-
-.footer-brand {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.05rem;
-  font-weight: 400;
-  font-style: italic;
-  letter-spacing: 0.22em;
-  color: var(--rose);
-  margin-top: 0.8rem;
-}
-
-.footer-copy {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 0.68rem;
-  color: var(--light-gray);
-  margin-top: 0.3rem;
-  letter-spacing: 0.12em;
-}
-
-/* ═══════════════════════════════════════
-   SIDEBAR NAVIGATION
-   ═══════════════════════════════════════ */
-.sidebar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 260px;
-  height: 100vh;
-  background: rgba(255, 255, 255, 0.97);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border-right: 0.5px solid var(--gold-faint);
-  z-index: 1500;
-  display: flex;
-  flex-direction: column;
-  padding: 2.5rem 1.8rem 2rem;
-  box-sizing: border-box;
-  overflow-y: auto;
-  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.sidebar-brand {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.15rem;
-  font-weight: 500;
-  letter-spacing: 0.18em;
-  color: var(--charcoal);
-  text-decoration: none;
-  line-height: 1.4;
-  margin-bottom: 0.3rem;
-}
-
-.sidebar-brand:hover {
-  color: var(--rose);
-}
-
-.sidebar-tagline {
-  font-family: 'Zen Kaku Gothic New', sans-serif;
-  font-size: 0.62rem;
-  font-weight: 300;
-  color: var(--light-gray);
-  letter-spacing: 0.1em;
-  margin-bottom: 2.5rem;
-}
-
-.sidebar-divider {
-  width: 30px;
-  height: 0.5px;
-  background: var(--gold-faint);
-  margin-bottom: 2rem;
-}
-
-.sidebar-label {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 0.68rem;
-  font-weight: 600;
-  letter-spacing: 0.3em;
-  text-transform: uppercase;
-  color: var(--light-gray);
-  margin-bottom: 1.2rem;
-}
-
-.sidebar-nav {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  flex: 1;
-}
-
-.sidebar-nav li {
-  margin-bottom: 0.15rem;
-}
-
-.sidebar-link {
-  display: block;
-  font-family: 'Noto Serif JP', serif;
-  font-size: 0.82rem;
-  font-weight: 400;
-  color: var(--charcoal);
-  text-decoration: none;
-  padding: 0.65rem 0.9rem;
-  border-radius: 6px;
-  letter-spacing: 0.04em;
-  transition: background 0.2s, color 0.2s;
-  line-height: 1.5;
-}
-
-.sidebar-link:hover {
-  background: var(--cream);
-  color: var(--rose);
-}
-
-.sidebar-link.is-active {
-  background: linear-gradient(135deg, rgba(183, 148, 115, 0.08), rgba(183, 148, 115, 0.04));
-  color: var(--gold);
-  font-weight: 500;
-  border-left: 2px solid var(--gold);
-  padding-left: calc(0.9rem - 2px);
-}
-
-.sidebar-link-sub {
-  font-family: 'Zen Kaku Gothic New', sans-serif;
-  font-size: 0.62rem;
-  font-weight: 300;
-  color: var(--light-gray);
-  display: block;
-  margin-top: 0.15rem;
-}
-
-.sidebar-footer {
-  margin-top: auto;
-  padding-top: 2rem;
-  border-top: 0.5px solid var(--gold-faint);
-}
-
-.sidebar-footer-text {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 0.62rem;
-  color: var(--light-gray);
-  letter-spacing: 0.1em;
-  font-style: italic;
-}
-
-/* Sidebar overlay (mobile) */
-.sidebar-overlay {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: rgba(18, 16, 14, 0.45);
-  z-index: 1400;
-  opacity: 0;
-  transition: opacity 0.35s ease;
-}
-
-.sidebar-overlay.is-visible {
-  display: block;
-  opacity: 1;
-}
-
-/* Hamburger toggle button */
-.sidebar-toggle {
-  display: none;
-  position: fixed;
-  top: 14px;
-  left: 14px;
-  z-index: 1600;
-  width: 42px;
-  height: 42px;
-  background: rgba(255, 255, 255, 0.92);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  border: 0.5px solid var(--gold-faint);
-  border-radius: 8px;
-  cursor: pointer;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  gap: 5px;
-  transition: background 0.2s;
-}
-
-.sidebar-toggle span {
-  display: block;
-  width: 18px;
-  height: 1.5px;
-  background: var(--charcoal);
-  border-radius: 1px;
-  transition: transform 0.3s, opacity 0.3s;
-}
-
-.sidebar-toggle:hover {
-  background: var(--cream);
-}
-
-/* Site content wrapper — offset by sidebar width */
-.site-content {
-  margin-left: 260px;
-  min-height: 100vh;
-  transition: margin-left 0.35s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 /* ═══════════════════════════════════════
@@ -1084,35 +1051,35 @@ img {
    ═══════════════════════════════════════ */
 .portal-intro {
   text-align: center;
-  padding: 2rem 2rem 1rem;
-  max-width: 680px;
+  padding: 3rem 2rem 1.5rem;
+  max-width: 640px;
   margin: 0 auto;
 }
 
 .portal-intro-text {
   font-family: 'Noto Serif JP', serif;
-  font-size: 0.88rem;
+  font-size: 0.86rem;
   font-weight: 300;
-  color: var(--text);
-  line-height: 2;
-  letter-spacing: 0.04em;
+  color: var(--warm-gray);
+  line-height: 2.2;
+  letter-spacing: 0.05em;
 }
 
 .portal-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 2.5rem;
-  padding: 3rem 3rem 5rem;
+  gap: 2.8rem;
+  padding: 3rem 3.5rem 6rem;
   max-width: 1100px;
   margin: 0 auto;
 }
 
 .portal-card {
   position: relative;
-  border-radius: 12px;
+  border-radius: var(--radius-lg);
   overflow: hidden;
   background: var(--white);
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
   transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.4s ease;
   cursor: pointer;
   text-decoration: none;
@@ -1121,8 +1088,8 @@ img {
 }
 
 .portal-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
+  transform: translateY(-8px) scale(1.01);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
 }
 
 .portal-card-image {
@@ -1130,66 +1097,115 @@ img {
   aspect-ratio: 3 / 4;
   object-fit: cover;
   display: block;
-  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  transition: transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .portal-card:hover .portal-card-image {
-  transform: scale(1.03);
+  transform: scale(1.04);
 }
 
 .portal-card-body {
-  padding: 1.8rem 1.6rem 2rem;
+  padding: 2rem 1.8rem 2.2rem;
 }
 
 .portal-card-eyebrow {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 0.65rem;
-  font-weight: 400;
-  letter-spacing: 0.35em;
+  font-size: 0.62rem;
+  font-weight: 500;
+  letter-spacing: 0.4em;
   text-transform: uppercase;
   color: var(--gold);
-  margin-bottom: 0.6rem;
+  margin-bottom: 0.7rem;
 }
 
 .portal-card-title {
   font-family: 'Playfair Display', 'Noto Serif JP', serif;
-  font-size: 1.25rem;
+  font-size: 1.2rem;
   font-weight: 400;
   color: var(--charcoal);
-  letter-spacing: 0.08em;
-  margin-bottom: 0.7rem;
-  line-height: 1.5;
+  letter-spacing: 0.07em;
+  margin-bottom: 0.8rem;
+  line-height: 1.55;
 }
 
 .portal-card-desc {
-  font-family: 'Noto Serif JP', serif;
-  font-size: 0.78rem;
+  font-family: 'Zen Kaku Gothic New', sans-serif;
+  font-size: 0.76rem;
   font-weight: 300;
-  color: var(--text);
-  line-height: 1.9;
-  margin-bottom: 1.2rem;
+  color: var(--warm-gray);
+  line-height: 2;
+  margin-bottom: 1.4rem;
 }
 
 .portal-card-link {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   font-weight: 500;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.2em;
   color: var(--gold);
   text-decoration: none;
   transition: color 0.2s;
+  display: inline-block;
 }
 
-.portal-card-link:hover {
-  color: var(--rose);
+.portal-card:hover .portal-card-link {
+  color: var(--charcoal);
 }
 
 /* ═══════════════════════════════════════
-   RESPONSIVE
+   FOOTER
    ═══════════════════════════════════════ */
+.site-footer {
+  text-align: center;
+  padding: 5rem 2rem 5rem;
+  margin-top: 3rem;
+  background: var(--white);
+  border-top: 1px solid var(--gold-faint);
+  position: relative;
+  clear: both;
+}
 
-/* Tablet — sidebar collapses */
-@media (max-width: 1000px) {
+.footer-ornament {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.82rem;
+  color: var(--gold-light);
+  letter-spacing: 0.55em;
+  margin-bottom: 1rem;
+}
+
+.footer-text {
+  font-family: 'Zen Kaku Gothic New', sans-serif;
+  font-size: 0.68rem;
+  font-weight: 300;
+  color: var(--light-gray);
+  line-height: 2;
+  letter-spacing: 0.06em;
+}
+
+.footer-brand {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1rem;
+  font-weight: 400;
+  font-style: italic;
+  letter-spacing: 0.22em;
+  color: var(--rose);
+  margin-top: 1rem;
+}
+
+.footer-copy {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.65rem;
+  color: var(--light-gray);
+  margin-top: 0.4rem;
+  letter-spacing: 0.12em;
+}
+
+/* ═══════════════════════════════════════
+   RESPONSIVE — Tablet (sidebar collapses)
+   ═══════════════════════════════════════ */
+@media (max-width: 1024px) {
+
+  /* Sidebar slides off-screen */
   .sidebar {
     transform: translateX(-100%);
   }
@@ -1198,21 +1214,24 @@ img {
     transform: translateX(0);
   }
 
+  /* Show hamburger */
   .sidebar-toggle {
     display: flex;
   }
 
+  /* Content takes full width */
   .site-content {
     margin-left: 0;
   }
 
-  .masonry {
-    columns: 2;
-    column-gap: 1.4rem;
+  /* Header spans full width */
+  .site-header {
+    left: 0;
   }
 
-  .dress-card {
-    margin-bottom: 1.4rem;
+  .masonry {
+    columns: 2;
+    column-gap: 1.6rem;
   }
 
   .portal-grid {
@@ -1221,40 +1240,35 @@ img {
   }
 }
 
-/* Mobile (1 column) */
-@media (max-width: 600px) {
+/* ═══════════════════════════════════════
+   RESPONSIVE — Mobile
+   ═══════════════════════════════════════ */
+@media (max-width: 640px) {
   :root {
-    --header-h: 52px;
+    --header-h: 56px;
   }
 
   .hero {
-    padding: 8rem 1.2rem 3.5rem;
+    padding: calc(var(--header-h) + 4rem) 1.5rem 4rem;
   }
 
   .hero-eyebrow {
-    font-size: 0.6rem;
+    font-size: 0.58rem;
     letter-spacing: 0.4em;
   }
 
   .header-brand {
-    font-size: 0.95rem;
-    letter-spacing: 0.12em;
+    font-size: 0.9rem;
+    letter-spacing: 0.1em;
   }
 
-  .header-tagline {
-    display: none;
-  }
-
+  .header-tagline,
   .header-sep {
     display: none;
   }
 
-  .gallery-wrapper {
-    padding: 0;
-  }
-
   .collection-section {
-    padding: 3.5rem 0 3rem;
+    padding: 4rem 0 3.5rem;
   }
 
   .collection-section:first-child {
@@ -1262,24 +1276,19 @@ img {
   }
 
   .collection-header {
-    padding: 0 1rem 2.5rem;
+    padding: 0 1.2rem 2.5rem;
   }
 
   .collection-title {
-    letter-spacing: 0.12em;
+    letter-spacing: 0.1em;
   }
 
   .collection-desc {
-    font-size: 0.78rem;
+    font-size: 0.76rem;
   }
 
   .collection-grid {
-    padding: 0 0.75rem;
-  }
-
-  .collection-hero {
-    padding: 0 0.75rem;
-    margin-bottom: 2rem;
+    padding: 0 1rem;
   }
 
   .masonry {
@@ -1297,11 +1306,11 @@ img {
   }
 
   .modal-body {
-    padding: 1.4rem 1.3rem 1.8rem;
+    padding: 1.5rem 1.4rem 2rem;
   }
 
   .modal-title {
-    font-size: 1.15rem;
+    font-size: 1.1rem;
   }
 
   .lightbox-prev {
@@ -1318,23 +1327,25 @@ img {
 
   .portal-grid {
     grid-template-columns: 1fr;
-    padding: 1.5rem 1rem 3rem;
-    gap: 1.8rem;
+    padding: 1.5rem 1.2rem 3rem;
+    gap: 2rem;
   }
 
   .portal-card-title {
-    font-size: 1.1rem;
+    font-size: 1.05rem;
   }
 
   .sidebar {
-    width: 280px;
+    width: 290px;
   }
 }
 
-/* Large desktop (3+ columns) */
-@media (min-width: 1200px) {
+/* ═══════════════════════════════════════
+   RESPONSIVE — Large desktop
+   ═══════════════════════════════════════ */
+@media (min-width: 1400px) {
   .masonry {
     columns: 3;
-    column-gap: 2rem;
+    column-gap: 2.2rem;
   }
 }
