@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://tks36400-create.github.io/ai-weddingdress-book/sitemap.xml

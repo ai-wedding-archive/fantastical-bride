@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <!-- Portal / Home -->
+  <url>
+    <loc>https://tks36400-create.github.io/ai-weddingdress-book/</loc>
+    <lastmod>2026-02-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- Collection A: Urban Night Bride -->
+  <url>
+    <loc>https://tks36400-create.github.io/ai-weddingdress-book/urban-night.html</loc>
+    <lastmod>2026-02-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Collection B: Winter Silence Bride -->
+  <url>
+    <loc>https://tks36400-create.github.io/ai-weddingdress-book/winter-silence.html</loc>
+    <lastmod>2026-02-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Collection C: Forest Light Bride -->
+  <url>
+    <loc>https://tks36400-create.github.io/ai-weddingdress-book/forest-light.html</loc>
+    <lastmod>2026-02-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Collection D: Chapel Light Bride -->
+  <url>
+    <loc>https://tks36400-create.github.io/ai-weddingdress-book/chapel-light.html</loc>
+    <lastmod>2026-02-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+</urlset>
