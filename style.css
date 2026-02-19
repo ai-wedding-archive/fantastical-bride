@@ -541,6 +541,9 @@ a {
     box-shadow var(--transition);
   opacity: 0;
   transform: translateY(28px);
+  /* Equal-height flex layout */
+  display: flex;
+  flex-direction: column;
 }
 
 .dress-card.is-visible {
@@ -566,6 +569,8 @@ a {
   position: relative;
   overflow: hidden;
   background: var(--cream);
+  flex-shrink: 0;
+  /* image never squishes */
 }
 
 .card-image-wrap img {
@@ -629,6 +634,10 @@ a {
 /* Card Info */
 .card-info {
   padding: 1.4rem 1.6rem 1.6rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  /* stretches to fill remaining card height */
 }
 
 .card-vol {
@@ -648,6 +657,8 @@ a {
   color: var(--charcoal);
   margin: 0.45rem 0 0.3rem;
   line-height: 1.65;
+  flex: 1;
+  /* title takes available space, pushing date down */
 }
 
 .card-date {
@@ -656,6 +667,9 @@ a {
   font-weight: 400;
   color: var(--light-gray);
   letter-spacing: 0.18em;
+  margin-top: auto;
+  /* always anchored to card bottom */
+  padding-top: 0.4rem;
 }
 
 /* ═══════════════════════════════════════
